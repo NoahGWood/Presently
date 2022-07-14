@@ -1,0 +1,33 @@
+section {
+    background-color:rgb(218, 230, 230);
+    padding: .5em;
+    width: 80%;
+    margin-left: 10%;
+}
+
+section h3 {
+    margin: 0 auto;
+    text-align: center;
+}
+details {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: .5em .5em 0;
+}
+
+summary {
+    font-weight: bolder;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+    background-color: rgb(50, 146, 50);
+    text-align: center;
+}
+
+details[open] {
+    padding: .5em;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .5em;
+}
