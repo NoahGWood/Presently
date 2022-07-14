@@ -1,0 +1,21 @@
+<fieldset>
+    <div class="form-card">
+        <h2 class="fs-title">Confirmation</h2>
+        <label for="final-title">Title:</label>
+        <input type="text" id="final-title" name="final-title" />
+        <details open>
+            <summary><b>Presentation</b></summary>
+
+            <label for="final-text" id="ft-lbl">Text</label>
+            <textarea id="final-text" name="final-text" cols="30" rows="10" spellcheck="true"></textarea>
+            <label for="final-file" id="ff-lbl">File:</label>
+            <input type="file" id="final-file" name="final-file" />
+        </details>
+        <details>
+            <summary><b>Settings</b></summary>
+            {% include 'partials/editor/wiz3.html' %}
+        </details>
+    </div>
+    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+    <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+</fieldset>

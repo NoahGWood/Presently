@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <button onclick="showSettings()" id="settings_button" select=true big>Settings</button>
+        </div>
+        <div class="row">
+            <button onclick="showTextBox()" id="text_button"  big>Text</button>
+        </div>
+    </div>
+    <div class="content col" id="present_form">
+    </div>
+</div>
+<template id="settings_template">
+    <form class="presentation_form">
+        <label for="title">Title</label>
+        <input type="text" id="title"><br />
+        <label for="language">Language</label>
+        <select name="language" id="language">
+            <option value="en">English</option>
+            <option value="es">Espanol</option>
+        </select>
+        <label for="cap">Captions</label>
+        <input type="checkbox" name="cap" id="cap">
+    </form>
+</template>
+
+<template id="text_template">
+    <form class="presentation_form grid">
+        <div class="row">
+            <div class="col">
+                <label for="text">Text</label>
+                <textarea name="text" id="text" cols="35" rows="20" oninput="textUpdate()"></textarea>
+            </div>
+        </div>
+        <div class="row">
+                <button class="button col" submit>Submit</button>
+                <button class="button col" onclick="clearChanges()">Clear Changes</button>
+        </div>
+    </form>
+</template>
+
+<script>
+    var defaultText = "{{ text }}";
+    var clearChangeText = defaultText;
+    var textArea = '';
+    var form = document.getElementById('present_form');
+    var btn = document.getElementById('settings_button');
+
+    function textUpdate() {
+        defaultText = textArea.value;
+    }
+
+    function showSettings() {
+        deselectAllSettings();
+        var tmp = document.getElementById('settings_template');
+        var clone = tmp.content.cloneNode(true);
+        form.replaceChildren(clone)
+        btn = document.getElementById('settings_button');
+        btn.setAttribute('select', true);
+    }
+    function showTextBox() {
+        deselectAllSettings();
+        var tmp = document.getElementById('text_template');
+        var clone = tmp.content.cloneNode(true);
+        form.replaceChildren(clone);
+        btn = document.getElementById('text_button');
+        btn.setAttribute('select', true);
+        textArea = document.getElementById('text');
+        textArea.innerHTML = defaultText;
+    }
+
+    function deselectAllSettings() {
+        if (btn) {
+            btn.removeAttribute('select');
+        }
+    }
+
+    function clearChanges() {
+        console.log("CLEAR");
+        textArea.value = clearChangeText;
+    }
+
+    function submitForm(event) {
+        var url="/editor/{{ fname }}"
+        console.log(url);
+        var request = new XMLHttpRequest();
+        request.open('POST', url, true);
+        request.onload = function () {
+            console.log(request.responseText);
+        }
+
+        request.onerror = function() {
+            console.log("ERROR");
+        }
+
+        request.send(new FormData(event.target));
+        event.preventDefault();
+    }
+
+    form.addEventListener("submit", submitForm);
+    
+    showSettings();
+</script>

@@ -1,0 +1,38 @@
+{% extends 'partials/editor/core.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/editor.css') }}">
+
+{% endblock css %}
+{% block title %}Editor{% endblock title %}
+{% block body %}
+<!-- MultiStep Form -->
+<div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+    <h2><strong>Sign Up Your User Account</strong></h2>
+    <p>Fill all form field to go to next step</p>
+    <div class="row">
+        <div class="col-md-12 mx-0">
+            <form id="msform">
+                <!-- progressbar -->
+                <ul id="progressbar">
+                    <li class="active" id="project-name"><strong>Project Name</strong></li>
+                    <li id="project-text"><strong>Add Text</strong></li>
+                    <li id="project-settings"><strong>Configure Presentation</strong></li>
+                    <li id="confirm-price"><strong>Confirm</strong></li>
+                    <li id="confirm"><strong>Finish</strong></li>
+                </ul>
+                <!-- fieldsets -->
+                {% include 'partials/editor/wiz1.html' %}
+                {% include 'partials/editor/wiz2.html' %}
+                {% include 'partials/editor/wiz3.html' %}
+                {% include 'partials/editor/wiz4.html' %}
+                {% include 'partials/editor/wiz5.html' %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/wizard.js') }}"></script>
+<script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+{% endblock javascript %}

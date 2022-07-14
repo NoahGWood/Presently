@@ -1,0 +1,29 @@
+{% extends 'partials/editor/core.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/wizard.css') }}">{% endblock css %}
+{% block title %}Editor{% endblock title %}
+{% block body %}
+<!-- MultiStep Form -->
+<div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+    <h2><strong>Sign Up Your User Account</strong></h2>
+    <p>Fill all form field to go to next step</p>
+    <div class="row">
+        <div class="col-md-12 mx-0">
+            <form id="msform">
+                <!-- progressbar -->
+                <ul id="progressbar">
+                    <li class="active" id="account"><strong>Account</strong></li>
+                    <li id="name"><strong>Personal</strong></li>
+                    <li id="payment"><strong>Payment</strong></li>
+                    <li id="confirm"><strong>Finish</strong></li>
+                </ul>
+                <!-- fieldsets -->
+                {% include 'partials/editor/wiz1.html' %}
+                {% include 'partials/editor/wiz2.html' %}
+                {% include 'partials/editor/wiz3.html' %}
+                {% include 'partials/editor/wiz4.html' %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}
