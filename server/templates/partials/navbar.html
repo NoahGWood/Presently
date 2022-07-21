@@ -1,18 +1,30 @@
 <header role="banner">
 <nav class="main-nav">
         <a class="brandlink" href="/" style="display:inline-block"><b>Presently</b></a>
-        <span class="collapsable">
-            {% if current_user.is_authenticated %}<a href="/logout">Logout</a>
-            <a id="myBtn">
+        <div class="divider"></div>
+        <div class="nav-items">
+            {% if current_user.is_authenticated %}<a class="nav-item"href="/logout">Logout</a>
+            <a class="nav-item"id="myBtn">
             Profile
             </a>
-            <a href="/editor/new">New</a>
+            <a class="nav-item"href="/editor/new">New</a>
             {% else %}
-            <a href="/about">About</a>
-            <a href="/features">Features</a>
-            <a href="/pricing">Pricing</a>
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-        {% endif %}</span>
+            <a class="nav-item"href="/about">About</a>
+            <a class="nav-item"href="/features">Features</a>
+            <a class="nav-item"href="/pricing">Pricing</a>
+            <a class="nav-item"href="/login">Login</a>
+            <a class="nav-item"href="/register">Register</a>
+        {% endif %}
+        </div>
+        <a class="collapse-btn" onclick="navToggle();"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg></a>
     </nav>
     </header>
+
+    <script>
+        function navToggle() {
+            const navs = document.querySelectorAll('.nav-item');
+            navs.forEach(nav => nav.classList.toggle('nav-item-toggle'));
+        }
+    </script>

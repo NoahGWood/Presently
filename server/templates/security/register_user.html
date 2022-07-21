@@ -7,7 +7,6 @@
 {% block body %}
 {% include "security/_messages.html" %}
 <h1>{{ _fsdomain('New Account') }}</h1>
-<article>
 <form action="{{ url_for_security('register') }}" method="POST" name="register_user_form">
   {{ register_user_form.hidden_tag() }}
   {{ render_field_with_errors(register_user_form.email) }}
@@ -19,7 +18,6 @@
     {{ render_field_with_errors(register_user_form.password_confirm) }}
   {% endif %}
   {{ render_field(register_user_form.submit) }}
+  {% include "security/_menu.html" %}
 </form>
-</article>
-{% include "security/_menu.html" %}
 {% endblock %}

@@ -8,8 +8,9 @@
     <title>Presently | {% block title %}{% endblock title %}</title>
     <!-- Meta tags -->{% block meta %}{% endblock meta %}
     {% include 'partials/header.html' %}
-    <link rel="stylesheet" media="screen and (min-width: 755px)" href="{{ url_for('static', filename='css/widescreen.css') }}">
-    <link rel="stylesheet" media="screen and (max-width: 754px)" href="{{ url_for('static', filename='css/smallscreen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/widescreen.css') }}">
+<!--    <link rel="stylesheet" media="screen and (min-width: 1500px)" href="{{ url_for('static', filename='css/widescreen.css') }}">
+    <link rel="stylesheet" media="screen and (max-width: 1499px)" href="{{ url_for('static', filename='css/smallscreen.css') }}">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     {% block css %}{% endblock css %}
     <!-- Put any js that cannot run late here -->{% block earlyjs %}{% endblock earlyjs %}

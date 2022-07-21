@@ -8,6 +8,12 @@ body {
     color: var(--secondary);
 }
 
+
+@media (min-width: 450px) {
+    
+}
+
+
 .main-nav {
     position: sticky;
     top: 0;
@@ -52,136 +58,58 @@ body {
     margin:0;
 }
 
+
 .main-content article {
     border-radius: 2rem;
     background-color: inherit;
     width: auto;
     margin:inherit;
     overflow-y: scroll;
-    text-align: center;
+    text-align: center; 
+    display: flex;/* Use when read to split screen */
 }
-
 .main-content aside {
     max-height: 100%;
-    width: auto;
-    display: inline-block;
+    width:20%; /* Use when ready to split */
     text-align: center;
     border-radius: 1rem;
     border: 2.5px solid var(--secondary);
     margin: 2rem;
 }
+.main-content article .inner-article {
+    max-width: 60%;
+    padding: 1%;
+    border-radius: 2rem;
+    border: 2.5px solid var(--secondary);
+    margin: 2rem;
+    grid-row: auto;
+}
+
+
+
 
 .main-content article figure {
     text-align: center;
     border-radius: 1rem;
-    min-width: 50%;
+    min-width: 75%;
     border: 2.5px solid var(--secondary);
 }
 
 .main-content article figure img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width:100%;
+    max-height:100%;
     border-radius: 1rem;
 }
 
-@media (min-width: 450px) {
-
-
-    .main-content {
-        background-color: var(--primary);
-        border-radius: 2rem;
-        color: var(--secondary);
-        border: 2.5px solid var(--secondary);
-        margin: 1rem;
-    }
-
-    .main-content article {
-        border-radius: 2rem;
-        background-color: inherit;
-        width: auto;
-        margin: auto;
-        overflow-y: scroll;
-        text-align: center;
-        border: 2.5px solid var(--secondary);
-        margin: 1rem;
-    }
-
-    .main-content aside {
-        max-height: 100%;
-        width: auto;
-        display: inline-block;
-        text-align: center;
-        border-radius: 1rem;
-        border: 2.5px solid var(--secondary);
-        margin: 2rem;
-    }
-
-    .main-content article figure {
-        text-align: center;
-        border-radius: 1rem;
-        min-width: 50%;
-        border: 2.5px solid var(--secondary);
-    }
-
-    .main-content article figure img {
-        max-width: 100%;
-        max-height: 100%;
-        border-radius: 1rem;
-    }
-
-    .main-content section {
-        margin: 0;
-        border-radius: 2rem;
-        text-align: center;
-        overflow-y: hidden;
-        display: flex;
-        justify-content: center;
-    }
-
-    .main-content section figure {
-        position: relative;
-        width: 90%;
-        margin-left: 5%;
-        background: var(--primary);
-        border-radius: 2rem;
-        border: 1px solid var(--secondary);
-    }
-
-    .main-content section figure form {
-        height: 100%;
-        min-width: 60%;
-        max-width: 95%;
-        border: 1px solid var(--secondary);
-        border-radius: 2rem;
-        display: block;
-    }
-
-}
-
-.main-content section {
-    margin: 0;
-    text-align: center;
-    overflow-y: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-.main-content section figure {
-    position: relative;
-}
-
-.main-content section figure form {}
-
-
-.main-content>div {
+.main-content > div {
     background-color: inherit;
     max-height: 100%;
-    margin: 2rem;
     width: auto;
     overflow-y: scroll;
     text-align: center;
     border-radius: 1rem;
     border: 2.5px solid var(--secondary);
+    margin:2rem;
 }
 
 
@@ -191,11 +119,12 @@ footer {
     display: flex;
     border: 2.5px solid var(--secondary);
     color: var(--secondary);
-    margin: 1rem;
+    margin:1rem;
 }
 
 .footer-item {
-    margin: auto;
+    margin: 1rem;
+    flex-basis: 100%;
     align-self: flex-end;
     text-align: center;
 }
@@ -230,7 +159,7 @@ a:active {
     border-radius: .25em;
     border-color: var(--primary);
     background-color: lawngreen;
-    color: var(--primary);
+    color:var(--primary);
 }
 
 
@@ -268,8 +197,8 @@ button {
     color: var(--secondary);
     background-color: var(--primary);
     border-radius: 1rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
     border: 2px solid var(--secondary);
     margin: 1rem;
 }

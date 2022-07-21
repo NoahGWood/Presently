@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block meta %}
+    <!-- Tell robots we hate them -->
+    <meta name=”robots” content=”index, nofollow”>{% endblock meta %}
+{% block title %}Pay{% endblock title %}
+{% block body %}
+        <h1>Presently</h1>
+        <form id="purchase-form">
+
+        </form>
+    {% endblock body %}
+
+{% block javascript %}
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    console.log("Sanity");
+    fetch("/config")
+    .then((result) => { return result.json(); })
+    .them((data) => {
+        const stripe = Stripe(data.publicKey);
+    })
+</script>
+
+{% endblock %}

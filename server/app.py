@@ -88,15 +88,16 @@ def profile():
 # Blueprints
 from views.test import profile_pages
 from views.editor import editor_pages
+from views.pay import payment_pages
+
 app.register_blueprint(profile_pages)
 app.register_blueprint(editor_pages)
+app.register_blueprint(payment_pages)
 
 #from views.upload import upload_pages
-#from views.pay import payment_pages
 #from views.features import features_pages
 
 #app.register_blueprint(upload_pages)
-#app.register_blueprint(payment_pages)
 #app.register_blueprint(features_pages)
 if __name__ == '__main__':
     app.run(debug=True)
