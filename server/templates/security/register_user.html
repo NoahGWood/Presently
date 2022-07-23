@@ -2,8 +2,8 @@
 {% block title %}Register{% endblock %}
 {% from "security/_macros.html" import render_field_with_errors, render_field %}
 {% block meta %}
-    <!-- Tell robots we hate them -->
-    <meta name=”robots” content=”index, follow”>{% endblock meta %}
+<!-- Tell robots we hate them -->
+<meta name=”robots” content=”index, follow”>{% endblock meta %}
 {% block body %}
 {% include "security/_messages.html" %}
 <h1>{{ _fsdomain('New Account') }}</h1>
@@ -11,11 +11,11 @@
   {{ register_user_form.hidden_tag() }}
   {{ render_field_with_errors(register_user_form.email) }}
   {% if security.username_enable %}
-    {{ render_field_with_errors(register_user_form.username) }}
-  {%  endif %}
+  {{ render_field_with_errors(register_user_form.username) }}
+  {% endif %}
   {{ render_field_with_errors(register_user_form.password) }}
   {% if register_user_form.password_confirm %}
-    {{ render_field_with_errors(register_user_form.password_confirm) }}
+  {{ render_field_with_errors(register_user_form.password_confirm) }}
   {% endif %}
   {{ render_field(register_user_form.submit) }}
   {% include "security/_menu.html" %}

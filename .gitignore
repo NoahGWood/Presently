@@ -1,5 +1,8 @@
 *.vscode
 
+# Ignore uploads folder
+server/static/uploads/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

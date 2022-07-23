@@ -76,23 +76,17 @@ body {
     width: auto;
     display: inline-block;
     text-align: center;
+    margin:1rem;
 }
 
 .main-content article {
     overflow-y: scroll;
     text-align: center;
     width: inherit;
-}
-
-.main-content article>div {
-    border-radius: var(--border-radius);
-    border: var(--default-border);
     margin: auto;
 }
 
-.main-content article>p {
-    text-align: center;
-    max-width: 50%;
+.main-content article>div {
     margin: auto;
 }
 
@@ -110,6 +104,12 @@ footer {
     align-self: center;
     text-align: center;
     vertical-align: middle;
+}
+
+
+.main-text li {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 @media (max-width:767px) {
@@ -147,6 +147,8 @@ footer {
         position: relative;
     }
 
+    .main-text,
+    .main-content article p,
     .main-content article figure {
         width: inherit;
     }
@@ -183,6 +185,8 @@ footer {
 }
 
 @media (max-width:575px) {
+    .main-text,
+    .main-content article>p,
     .main-content article figure {
         width: inherit;
     }
@@ -217,11 +221,37 @@ footer {
     }
 }
 
+
 /* show sxs screens */
 @media (min-width:768px) {
 
     .main-content article {
         display: flex;
+    }
+
+    .main-text {
+        width: 60%;
+        height:max-content;
+        border-radius: var(--border-radius);
+        border: var(--default-border);
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+        padding: 2.5rem;
+        padding-top: 5rem;
+        font-size: large;
+    }
+
+    .main-content article > p {
+        max-width: 60%;
+        border-radius: var(--border-radius);
+        border: var(--default-border);
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+        padding: 2.5rem;
+        padding-top: 5rem;
+        font-size: x-large;
+        text-align: center;
+        vertical-align: middle;
     }
 
     .main-content article figure {
@@ -527,4 +557,15 @@ li {
     margin-left: 40%;
     max-width: 20%;
     text-align: left;
+}
+
+/* Make embedding easier */
+
+.embedded {
+    width: 100%;
+    min-height: 500px;;
+    height:max-content;
+    border-radius: var(--border-radius);
+    border: var(--default-border);
+    font-size: large;
 }

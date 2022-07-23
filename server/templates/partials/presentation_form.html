@@ -4,7 +4,7 @@
             <button onclick="showSettings()" id="settings_button" select=true big>Settings</button>
         </div>
         <div class="row">
-            <button onclick="showTextBox()" id="text_button"  big>Text</button>
+            <button onclick="showTextBox()" id="text_button" big>Text</button>
         </div>
     </div>
     <div class="content col" id="present_form">
@@ -33,8 +33,8 @@
             </div>
         </div>
         <div class="row">
-                <button class="button col" submit>Submit</button>
-                <button class="button col" onclick="clearChanges()">Clear Changes</button>
+            <button class="button col" submit>Submit</button>
+            <button class="button col" onclick="clearChanges()">Clear Changes</button>
         </div>
     </form>
 </template>
@@ -81,7 +81,7 @@
     }
 
     function submitForm(event) {
-        var url="/editor/{{ fname }}"
+        var url = "/editor/{{ fname }}"
         console.log(url);
         var request = new XMLHttpRequest();
         request.open('POST', url, true);
@@ -89,7 +89,7 @@
             console.log(request.responseText);
         }
 
-        request.onerror = function() {
+        request.onerror = function () {
             console.log("ERROR");
         }
 
@@ -98,6 +98,6 @@
     }
 
     form.addEventListener("submit", submitForm);
-    
+
     showSettings();
 </script>

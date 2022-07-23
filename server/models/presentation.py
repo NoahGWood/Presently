@@ -10,14 +10,17 @@ class File(Base):
     filepath = Column(String(255), unique=True)
     ctime = Column(DateTime())
     mtime = Column(DateTime())
-    presentation_id = Column('presentation_id', Integer(), ForeignKey('presentation.id'))
+    presentation_id = Column('presentation_id', Integer(),
+                             ForeignKey('presentation.id'))
     language = Column(String(30))
+
 
 class PresentationUser(Base):
     __tablename__ = 'presentations_users'
     id = Column(Integer(), primary_key=True)
     user_id = Column('user_id', Integer(), ForeignKey('user.id'))
-    presentation_id = Column('presentation_id', Integer(), ForeignKey('presentation.id'))
+    presentation_id = Column('presentation_id', Integer(),
+                             ForeignKey('presentation.id'))
 
 
 class Presentation(Base):

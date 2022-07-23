@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Terms of Service{% endblock title %}
+{% block meta %}
+<!-- Tell robots we love them -->
+<meta name=”robots” content=”index, follow”>{% endblock meta %}
+{% block body %}
+<h1>Presently TOS</h1>
+<!-- This was generated using termsly, not my work!!!-->
+    <iframe src="{{ url_for('tos_termly') }}" class="embedded">
+        
+    </iframe>
+{% endblock body %}

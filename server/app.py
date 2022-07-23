@@ -49,6 +49,8 @@ def create_file_db():
         db_session.add(pres)
         db_session.add(f)
         db_session.add(usr)
+
+
 @app.before_request
 def _create_session():
     if db_session == None:
@@ -79,6 +81,22 @@ def pricing():
 @app.route("/dash")
 def profile():
     return render_template("dashboard.html")
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+@app.route("/privacy_termly")
+def privacy_termly():
+    return render_template("privacy_termly.html")
+
+@app.route("/tos")
+def tos():
+    return render_template("tos.html")
+
+@app.route("/tos_termly")
+def tos_termly():
+    return render_template("tos_termly.html")
 
 #@app.route("/dashboard")
 #@auth_required()
