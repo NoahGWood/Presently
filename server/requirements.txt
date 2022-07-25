@@ -1,4 +1,0 @@
-flask
-flask-security-too
-sqlalchemy
-stripe
