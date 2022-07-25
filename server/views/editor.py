@@ -112,3 +112,9 @@ def GetVideos(presentation):
         if f.ftype == 'video':
             vids.append(f)
     return vids
+
+@editor_pages.route("/video/<video_id>", methods=["GET"])
+@auth_required()
+def stream_video(video_id):
+    return video_id
+    current_user

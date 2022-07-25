@@ -1,0 +1,17 @@
+{
+	"users": [
+		{
+			"_id":"userid",
+			"name": "username",
+			"email": "email@example.com",
+			"password": "someEncryptedString",
+			"credits": "1",
+			"presentations": [ {"pid":"<relationship>"}	]
+		}	
+	]
+}
+
+
+{
+
+}

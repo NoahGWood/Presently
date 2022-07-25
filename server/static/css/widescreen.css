@@ -158,29 +158,12 @@ footer {
         height: auto;
     }
 
-    .main-content section {
-        margin-top: 1rem;
-        margin-bottom: auto;
+    .main-content article figure video {
         width: 100%;
-    }
-
-    .main-content section figure {
-        position: relative;
-        margin: 0;
-    }
-
-    .main-content section figure video {
-        min-width: 100%;
-        min-height: 100%;
-        border-radius: var(--border-radius);
-    }
-
-    .main-content>section>.row>.col {
-        flex: none;
-        min-width: 99%;
+        margin:auto;
+        height: auto;
         border-radius: var(--border-radius);
         border: var(--default-border);
-        margin-top: 1rem;
     }
 }
 
@@ -196,28 +179,10 @@ footer {
         height: auto;
     }
 
-    .main-content section {
-        margin-top: 1rem;
-        margin-bottom: auto;
-        width: 100%;
-    }
-
-    .main-content section figure {
-        position: relative;
-        margin: 0;
-    }
-
-    .main-content section figure video {
+    .main-content article figure video {
         min-width: 100%;
         min-height: 100%;
         border-radius: var(--border-radius);
-    }
-
-    .main-content>section>.row>.col {
-        flex: auto;
-        border-radius: var(--border-radius);
-        border: var(--default-border);
-        margin-top: 1rem;
     }
 }
 
@@ -273,44 +238,13 @@ footer {
         border: var(--default-border);
     }
 
-    .main-content section {
-        margin-top: 1rem;
-        margin-bottom: auto;
-    }
-
-    .main-content section figure {
-        margin: 0;
-    }
-
-    .main-content section figure video {
+    .main-content article figure video {
         width: 100%;
         height: 100%;
         border-radius: var(--border-radius);
         border-radius: var(--border-radius);
         border: var(--default-border);
         margin: 0;
-    }
-
-    .main-content section>.row {
-        display: flex;
-    }
-
-    .main-content section>.row .col:nth-child(1) {
-        position: relative;
-        margin: 0;
-        margin-left: 1rem;
-        align-items: center;
-        align-self: center;
-        align-content: center;
-        justify-content: center;
-    }
-
-    .main-content section>.row>.col:nth-child(2) {
-        position: relative;
-        margin: 0;
-        margin-left: 1rem;
-        border-radius: var(--border-radius);
-        border: var(--default-border);
     }
 }
 

@@ -8,9 +8,12 @@
 			onload="displayChapters(this)">
 	</video>
 	{% else %}
-	<video controls id="downtown-los-angeles">
-		<track kind="chapters" label="Locations" srclang="en" default onload="displayChapters(this)">
-		<progress value="32" max="100"></progress>
+	<video loop autoplay>
+		<source src="{{ url_for('static', filename='video/loading.webm') }}" type="video/webm">
+		<source src="{{ url_for('static', filename='video/loading.mp4') }}" type="video/mp4">
+		<source src="{{ url_for('static', filename='video/loading.mov') }}" type="video/mov">
+		<p>Your browser does not support the video tag</p>
+		Free Stock Footage by <a rel="nofollow" href="http://www.videezy.com">Videezy!</a> 
 	</video>
 	{% endif %}
 </figure>
