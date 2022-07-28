@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-db_url = os.environ.get("DATABASE_URL")
+db_url = "postgresql://" + os.environ.get("DATABASE_URL").split("//")[1] # Heroku won't change this
 #engine = create_engine('sqlite:////tmp/test.db')
 engine = create_engine(db_url)
 
