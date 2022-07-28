@@ -1,0 +1,8 @@
+flask
+flask-security-too
+sqlalchemy
+stripe
+gunicorn
+google-cloud-pubsub
+google-cloud-storage
+psycopg2

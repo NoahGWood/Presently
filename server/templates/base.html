@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<!-- Header-->
+
+<head>
+    <!-- Title should be different for accessibility-->
+    <title>Presently | {% block title %}{% endblock title %}</title>
+    <!-- Meta tags -->{% block meta %}{% endblock meta %}
+    {% include 'partials/header.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/widescreen.css') }}">
+<!--    <link rel="stylesheet" media="screen and (min-width: 1500px)" href="{{ url_for('static', filename='css/widescreen.css') }}">
+    <link rel="stylesheet" media="screen and (max-width: 1499px)" href="{{ url_for('static', filename='css/smallscreen.css') }}">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block css %}{% endblock css %}
+    <!-- Put any js that cannot run late here -->{% block earlyjs %}{% endblock earlyjs %}
+</head>
+
+<!-- Body -->
+
+<body style="margin:1rem">
+    <!--Navbar -->
+    {% include 'partials/navbar.html' %}
+    <!-- Wrapper -->
+    <div class="wrapper">
+        <!-- Main Content -->
+        <main role="main" class="main-content">
+            {% block body %}{% endblock body %}
+        </main>
+        {% block aside %}<aside></aside>{% endblock aside %}
+    </div>
+    <!-- Footer -->
+    {% include 'partials/footer.html' %}
+    <!-- Add javascript here -->{% block javascript %}{% endblock javascript %}
+</body>
+
+</html>

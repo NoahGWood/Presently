@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Pricing{% endblock title %}
+{% block meta %}
+    <!-- Tell robots we love them -->
+    <meta name=”robots” content=”index, follow”>{% endblock meta %}
+{% block body %}
+        <h1 style="text-align: center;">Pricing</h1>
+        <article>
+            <div class="main-text">
+                <h2>Credit Based Pricing</h2>
+                <p>We currently use a credits pricing model, each credit costs $1 USD and provides you with the ability to generate up to 5 slides and narrate 1500 words.
+                Simply load your <a href="{{ url_for('payment_pages.pay') }}">wallet</a> and start making presentations!</p>
+                <p>To help you get started, we'll give you a free trial credit when you sign up!</p>
+            </div>
+            {% include 'partials/call_to_action.html' %}
+        </article>
+    {% endblock body %}

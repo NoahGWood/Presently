@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Components</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <meta name="author" content="Noah G. Wood">
+
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header role="banner">
+        <nav class="main-nav" id="site-nav" role="navigation" aria-label="Main">
+            <a class="brandlink" href="index.html" style="display:inline-block"><b>Presently</b></a>
+            <span class="collapsable">
+                <a href="deliverable_1.html">Deliverable 1</a>
+                <a href="research_paper.html">Research Paper</a>
+                <a href="components.html" active>Components</a>
+                <a href="wireframes.html">Wireframes</a>
+                <a href="scenarios.html">Scenarios</a>
+            </span>
+        </nav>
+    </header>
+    <article id="main-content" role="main">
+        <header style="max-width:80%; margin:auto" >
+            <ul id="nav" role="navigation">
+                <li>
+                    <a href="#intro">
+                        <b>Semantic Web Components</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tags">
+                        <b>Tags Used</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#design">
+                        <b>Site Design</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#performance">
+                        <b>Site Performance</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#access">
+                        <b>accessibility</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#summary">
+                        <b>Summary</b>
+                    </a>
+                </li>
+            </ul>
+        </header>
+        <section style="margin: auto; margin-bottom:2.5rem; padding: 2.5%;" aria-labelledby="titleLabel">
+            <h1 id="titleLabel">Semantic Web Components Analysis</h1>
+            <h3>Noah Wood</h3>
+            <h3>College of Computer Science | Baker College</h3>
+            <h3>WEB1110: Intro To HTML</h3>
+            <h3>Professor Julie Wright</h3>
+            <h3>July 25th, 2022</h3>
+        </section>
+        <section style="margin: auto; margin-bottom:2.5rem; padding: 2.5%;" id="intro" aria-labelledby="introLabel">
+            <h1 id="introLabel">Semantic Web Components</h1>
+            <p>
+                &emsp;&emsp;Semantic web components are used to provide additional context for web browsers, search
+                engines, and
+                screen readers to help them determine how to display or serve content and in what order. These
+                components
+                also play an important role in improving the accessibility of a website by providing additional
+                information
+                for website accessibility software to help those with disabilities access websites. Two examples of how
+                semantic
+                tags can be used are the <a href="https://wordpress.com/">Wordpress.com</a> and <a href="https://www.makeuseof.com/best-mp3-tag-metadata-editors-linux/">makeuseof.com</a> sites.
+            </p>
+        </section>
+        <section style="margin: auto; margin-bottom:2.5rem; padding: 2.5%;" id="tags" aria-labelledby="tagsLabel">
+            <h1 id="tagsLabel">Semantic Tags Used</h1>
+            <p>
+                &emsp;&emsp;There are a number of semantic tags available for use in html. In the case of the makeuseof site, the first semantic tag used was the <a href="https://www.w3schools.com/tags/tag_article.asp">&lt;article&gt;</a> tag which is used to wrap the entire main article of the page. Good on their namesake, makeuseof makes good use of this tag to wrap their blog/news article which is one of the enumerated uses specifically outlined by <cite><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article">Mozilla Developer Network</a></cite>. One of the major benefits of this tag is that it tells screen readers which content to ignore, so if you visit the makeuseof site and your browser is set-up to be in screen reader mode, it will only display the content within the article. This helps to remove clutter such as advertisements, and it makes your site more accessible to mobile devices which may need a simplified view. The makeuseof site also uses <a href="https://www.w3schools.com/tags/tag_section.asp">&lt;section&gt;</a> tags to help delineate the main portions of the article. This allows each section of the page to be rendered under its' own heading in screen readers which helps to preserve the structure of the page.
+            </p>
+            <p>
+                &emsp;&emsp;Contrasting with the makeuseof site, the wordpress site does not wrap its' main content in an article tag, and for generally good reason. The home page is effectively a landing page with many large images. Each major section of the page is still split up using the &lt;section&gt; tag, however, without the article wrapping, not every browser will be able to render this page with a screen reader. The primary reason for not using the &lt;article&gt; tag to wrap this content is because none of the sections are independent of the page itself.
+            </p>
+            <p>
+                &emsp;&emsp;In addition to these tags, both sites also make use of the <a href="https://www.w3schools.com/tags/tag_picture.asp">&lt;picture&gt;</a>, <a href="https://www.w3schools.com/tags/tag_img.asp">&lt;img&gt;</a>, and <a href="https://www.w3schools.com/tags/tag_source.asp">&lt;source&gt;</a> tags. The &lt;picture&gt; and &lt;source&gt; tags are not strictly necessary, however they allow web developers to specify multiple image sources depending on screen size which allows them to better tailor the image to suit the screen size. The &lt;img&gt; tag is simply used to tell the browser or screen reader to render an image from an external source. This is opposed to an <a href="https://www.w3schools.com/html/html5_svg.asp">&lt;svg&gt;</a> or <a href="https://www.w3schools.com/html/html5_canvas.asp">&lt;canvas&gt;</a> tag which can be used to draw images directly in the browser.
+            </p>
+            <p>
+                &emsp;&emsp;While these are all perfectly fine uses of semantic tags for images, the makeuseof site also includes the <a href="https://www.w3schools.com/tags/tag_figure.asp">&lt;figure&gt;</a> tag. In this case, it is probably unnecessary, as the <a href="https://www.w3schools.com/tags/tag_figcaption.asp">&lt;figcaption&gt;</a> tag is not included to describe the pictures, but it is my suspicion that this markup is automatically generated, and if the author needed to add a caption to the figure, this would be the best way to do it to ensure that the text which belongs to the image does not get separated by a screen reader rearranging content on the page. The wordpress site does not include this, however it does make use of the <a href="https://www.w3schools.com/tags/tag_video.asp">&lt;video&gt;</a> tag. This along with the &lt;source&gt; tag enables them to embed a video in the webpage to be played in the browser. This is a proper use of the semantic tag and allows for their advertisement to play in browser seamlessly, and a proper fallback image to be displayed was provided if the source failed, however a fallback tag was not provided in the event that a browser did not support the &lt;video&gt; tag.
+            </p>
+            <p>
+                &emsp;&emsp;Finally, the wordpress site uses a &lt;section&gt; tag in lieu of the <a href="https://www.w3schools.com/tags/tag_footer.asp">&lt;footer&gt;</a> tag. While this is technically valid, it is not the ideal tag to use for this. The makeuseof site however, does use the proper footer tag. Because the makeuseof site uses a semantically appropriate footer tag, when viewing the page with a screen reader, the footer will not be rendered (and neither will the &lt;nav&gt; or &lt;header&gt; for that matter). If, however, you were to view the wordpress site, all the content would be rendered because there is no distinct article, and the footer would be rendered as if it were a section with a header and block text.
+            </p>
+        </section>
+        <section style="margin: auto; margin-bottom:2.5rem; padding: 2.5%;" id="design" aria-labelledby="designLabel">
+            <h1 id="designLabel">Design</h1>
+            <p>
+                &emsp;&emsp;The design of these sites are very different from one another. While the wordpress site makes good use of many colors, the makeuseof site sticks to just a few colors. The makeuseof site uses the Roboto font while the wordpress site uses Noto Sans for the primary text (although the <abbr title="Cascading Style Sheets">CSS</abbr> does embed quite a few fonts as well to use in different contexts on the blogging platform). 
+                <figure style="max-height:300px; overflow-y:auto" aria-hidden="true">
+                    <div>
+                        <img src="./imgs/makeuseof.png" style="max-width:40%; float: left;" alt="Make use of site screenshot." />
+                        <img src="./imgs/wordpress.png" style="max-width:40%;" alt="wordpress site screenshot" />
+                    </div>
+                    <figcaption>Makeuseof VS. Wordpress Site Design</figcaption>
+                </figure>
+            </p>
+            <p>
+                &emsp;&emsp;When it comes to proximity, alignment, and sizing, the wordpress site is very big and spaced out taking up the majority of the page. While this looks okay in a responsive site (e.g. on a mobile phone), it is a bit clunky and annoying to use on a desktop computer simply because of the amount of scrolling one needs to do to view each element and because of how large the elements themselves are. Perhaps most annoyingly, in spite of the large size, the use of multiple images per section makes them too big to be appealing and too small to read without difficulty.
+            </p>
+            <p>
+                &emsp;&emsp;In contrast, the makeuseof site has a balanced feel to it. On larger screens, the page splits into an article and aside showing additional content. The sizing, alignment, and proximity is also balanced. Images are large and take up nearly the full width of their container (with some margin). Section headers are thick and bolded while the text is also large but not so large to make it difficult to read. There is also plenty of content on the page to give a user sufficient time to pause between scrolling so as to not seem tedious to use the site. 
+            </p>
+            <p>
+                &emsp;&emsp;When it comes to uniqueness, wordpress certainly wins out, however that is not necessarily a good thing. Diverting from the tried and tested desktop layout for large screens may save a bit of time during development, but the primary target of wordpress is those who will use the software to host their own sites, and many of the functions one needs to do with their CMS involve using a desktop PC to accomplish it.
+            </p>
+        </section>
+        <section style="margin: auto; margin-bottom:2.5rem; padding: 2.5%;" id="performance" aria-labelledby="performanceLabel">
+            <h1 id="performanceLabel">Site Performance Comparison</h1>
+            <p>
+                &emsp;&emsp;In terms of performance, the clear winner is makeuseof. Their site was able to fully load and style the page from cached data in under 19ms compared to wordpress.com which took over <strong><em>99ms</em></strong> to load from cached data!
+            </p>
+            <p>
+                &emsp;&emsp;Page loading times could be greatly improved in wordpress by reducing the amount of CSS bloat in their system. The website is a CMS, and so provides a wealth of customizability for the site manager and bloggers who use it, but that comes at the cost of increased page load time due to having to process all the style rules that may be overwritten by later rules. Another improvement might be to turn many of the elements into static images since the markup does not actually do much for this site. Some sections included multiple images which could have been replaced by a single image made by the three reducing the graphics calls needed to be made.
+            </p>
+            <p>
+                &emsp;&emsp;The makeuseof site could be improved by fixing the errors in the javascript the site loads. Currently, the scripts take up 53% of the page load time, and they present a plethora of warnings, errors, and extraneous logs. The most time consuming is a script which attempts to draw a few colors on the screen which do not actually show on the screen, this is likely an extraneous function that was used for testing and never removed.
+            </p>
+        </section>
+        <section style="margin: auto; margin-bottom:2.5rem; padding: 2.5%;" id="access" aria-labelledby="accessLabel">
+            <h1 id="accessLabel">Accessibility Comparison</h1>
+            <p>
+                &emsp;&emsp;Perhaps somewhat surprisingly, wordpress actually scored better in accessibility testing peformed by <a href="https://www.webaccessibility.com/">webaccessibility.com</a> receiving a score of <b>75%</b> compared to makeuseof's <b>72%</b>
+                <figure>
+                   <div style="display:flex;">
+                        <img src="./imgs/makeus_access.png"     style="max-width:40%; margin: auto;" alt="Make Use Of Site Accessibility Rating" />
+                       <img src="./imgs/wp_access.png" style="max-width:40%;" alt="Wordpress Site Accessibility Rating." />
+                    </div>
+                    <figcaption>Comparison of Wordpress & Makeuseof Accessibility</figcaption>
+                </figure>
+            </p>
+            <p>
+                &emsp;&emsp;These results are especially surprising given that makeuseof's site works perfectly and expected with the firefox default screen reader while wordpress does not, however, upon deeper analysis, it becomes clear that there are hundreds of issues with the makeuseof site. Most of these issues relate to keyboard compatibility followed by text labels and finally contrast. With wordpress, nearly all of issues relate to contrast, a few to text labels, and only two to keyboard issues.
+            </p>
+        </section>
+        <section style="margin: auto; padding: 2.5%;" id="summary" aria-labelledby="summaryLabel">
+            <h1 id="summaryLabel">Summary</h1>
+            <p>
+                &emsp;&emsp;In conclusion, while the overall site design of makeuseof.com is much better than the wordpress.com landing page, makeuseof has some serious accessibility issues to account for. Likewise, wordpress may want to consider making their site a bit more screen reader friendly. While both sites are generally performant, wordpress is the clear loser in regard to performance and should seriously consider removing a lot of the bloat and reducing the number of external images they call as well. 
+            </p>
+        </section>
+        <br />
+        <footer>
+        <address style="margin-left: 25%;">
+            <p>Last Edited: <time datetime="2022-7-25-12-58-38-589816">July 25th 12:58</time></p>
+            You can contact the author of this site at:
+            <a href="mailto:nwood10@baker.edu">nwood10@baker.edu</a><br />
+            If you see any bugs or errors, you can also raise an issue on my project <a href="https://github.com/NoahGWood/Presently/issues/new">Github</a>.
+        </address>
+    </footer>
+    </article>
+</body>
+
+</html>

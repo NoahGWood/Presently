@@ -1,13 +1,10 @@
 *.vscode
 
-# Ignore environment files
-env/*
-
-# Ignore credentials file
-creds.json
-
 # Ignore uploads folder
 server/static/uploads/*
+
+# Ignore environment files
+env/*
 
 # Ignore hosting files
 server/*.yaml

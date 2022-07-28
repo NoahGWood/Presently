@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Web Standards & The Internet</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <meta name="author" content="Noah G. Wood">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header role="banner">
+        <nav class="main-nav">
+            <a class="brandlink" href="index.html" style="display:inline-block"><b>Presently</b></a>
+            <span class="collapsable">
+                <a href="deliverable_1.html">Deliverable 1</a>
+                <a href="research_paper.html" active="true">Research Paper</a>
+                <a href="components.html">Components</a>
+                <a href="wireframes.html">Wireframes</a>
+                <a href="scenarios.html">Scenarios</a>
+            </span>
+        </nav>
+    </header>
+    <section>
+        <h1>Web Standards & The Internet</h1>
+        <h3>Noah Wood</h3>
+        <h3>College of Computer Science | Baker College</h3>
+        <h3>WEB1110: Intro To HTML</h3>
+        <h3>Professor Julie Wright</h3>
+        <h3>July 15th, 2022</h3>
+    </section><br />
+    <section>
+        <h1>Web Standards & The Internet</h1>
+        <details open>
+            <summary>Background</summary>
+            <p>
+                &emsp;&emsp;The internet has come a long way since its inception in the late 1960s. What started as a
+                way for the US
+                military to share information between computers has grown into a global network that is used by billions
+                of people every day. The World Wide Web, or the web for short, is a system of interconnected documents
+                that can be accessed via the internet. <a onclick="OpenReferences('galileoRef')"><i>(Galileo,
+                        n.d.)</i></a>
+                The World Wide Web was invented in 1989 by <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee">Tim
+                    Berners-Lee</a>, a
+                nuclear physicist who was working at <a href="https://home.web.cern.ch/">CERN.</a> at the time. <a
+                    onclick="OpenReferences('bernersRef')"><i>(Berners-Lee, 2022)</i></a>
+            </p>
+        </details>
+        <details>
+            <summary>Trouble In The Early Days</summary>
+            <p>
+                &emsp;&emsp;By the mid 1990's, the world wide web was taking off, and along with this novel technology
+                came the
+                infamous <a href="https://en.wikipedia.org/wiki/Browser_wars"><strong>Browser Wars</strong></a> that
+                took place between Netscape's Navigator Browser and Microsoft's Internet Explorer. Each company, trying
+                to outdo one another, kept adding on features such as the now-deprecated <blink>Blink</blink> tag.<a
+                    onclick="OpenReferences('mozillaRef')"><i>(Mozilla, n.d.)</i></a> This
+                'war' got so out of hand that Microsoft actually placed a giant <strong>e</strong> statue in
+                front
+                of the entrance to Netscape's headquarters, to which Netscape responded by <a
+                    href="http://home.snafu.de/tilman/mozilla/stomps.html">defacing the
+                    statute</a> and placing their own company mascot on top of it. <a
+                    onclick="OpenReferences('strackRef')"><i>(Strack, 1997)</i></a>
+            </p>
+            <figure>
+                <img src="imgs/mozilla-uber-alles.jpg"><br />
+                <figcaption>&emsp;&emsp;&emsp;&emsp;<i>Mozilla Mascot Stomping On Interent Explorer</i></figcaption>
+            </figure>
+            <p>&emsp;&emsp;While this is a bit comical, all things considered, the real effect was much worse. Web
+                developers had to
+                support both browsers, each of which had competing features. Netscape provided users with the ability to
+                use javascript, one of the most important programming languages in web development today, and allowing
+                us to create responsive websites. Windows, however, provided us with cascading style sheets to make our
+                websites look much nicer. At the time you could only use one or the other. This, along with the every
+                increasing amount of functions that web developers had to support and the emergence of still even more
+                browsers, it became apparent that something had to be done to standardize the web.<a
+                    onclick="OpenReferences('mozillaRef')"><i>(Mozilla, n.d.)</i></a>
+            </p>
+        </details>
+        <details>
+            <summary>Web Standards & W3C</summary>
+            <p>
+                &emsp;&emsp;During the Browser Wars in 1994, Tim Berners-Lee left CERN and joined with MIT to found the
+                <a href="https://www.w3.org">World Wide Web Consortium (W3C)</a>. <a
+                    onclick="OpenReferences('bernersRef')"><i>(Berners-Lee, 2022)</i></a> The mission of W3C is to
+                create a set of standards known as Web
+                Standards. Web Standards are the guidelines that govern the design and development of websites.
+                These standards are driven by the need to ensure that websites are accessible to everyone regardless of
+                device, operating system, or browser. Without these standards it is up to the browser developers to
+                create standards for the web browser which makes it much more difficult for web developers to
+                create websites that work in all browsers. Simplicity, interoperability, and accessibility are the key
+                principles that guide the development of web standards. <a onclick="OpenReferences('w3cRef')"><i>(W3C
+                        Mission)</i></a>
+            </p>
+        </details>
+        <details>
+            <summary>Web Design Concepts</summary>
+            <p>
+                &emsp;&emsp;Websites have a few design principles which assist developers in creating sites that comply
+                with
+                the W3C standards. Doing this ensures that everyone will be able to access your website, regardless of
+                browser or device.
+            </p>
+            <div class="row" style="max-width:80%; margin-left:10%;">
+                <ul class="column">
+                    <li>
+                        <a onclick="changeTemplate('grace',this);">Graceful Degradation</a>
+                    </li>
+                    <li>
+                        <a onclick="changeTemplate('adapt',this);">Progressive/Adaptive</a>
+                    </li>
+                    <li>
+                        <a onclick="changeTemplate('responsive',this);">Responsive</a>
+                    </li>
+                    <li>
+                        <a onclick="changeTemplate('future',this);">Future-Friendly</a>
+                    </li>
+                    <li>
+                        <a onclick="changeTemplate('mobile',this);">Mobile First</a>
+                    </li>
+                </ul>
+                <div class="column c2" id="templateContainer"></div>
+            </div>
+        </details>
+        <details>
+            <summary>Latest Trends</summary>
+            <p>
+                &emsp;&emsp;The latest trend in web-development is towards the development of mobile-first websites.
+                From Progressive Web Apps to Accelerated Mobile Pages, the focus is on mobile devices for the
+                foreseeable future of the web. In the early days of computing, all the work was done on the server, but
+                as the technology continues to evolve, we will likely see more and more of the work offloaded onto the
+                client's browser.<a onclick="OpenReferences('gmiRef')"><i>(GMI, n.d.)</i></a>
+            </p>
+            <p>
+                &emsp;&emsp;For me, personally, I'd like to see more integration between the web and generic programming
+                languages such as Python and C. I won't have to wait long though, thanks to HTML5 we now have
+                WebAssembly which can be used to do things like embed games written in C# into a website. This
+                integration is still a far cry from being able to interact with the user's computer as if the code was
+                native, but we are taking steps in the right direction.<a
+                    onclick="OpenReferences('unityRef')"><i>(Unity3D, n.d.)</i></a>
+            </p>
+        </details>
+        <details id="references">
+            <summary>References</summary>
+            <ul>
+                <li>
+                    <a id="gmiRef" href="https://www.globalmediainsight.com/blog/web-development-trends/">
+                        &emsp;&emsp;GMI <i>25 latest web development trends to follow in 2022</i>GMI. Official GMI Blog.
+                        (n.d.). Retrieved July 15, from <br />
+                        &emsp;&emsp;&emsp;&emsp;2022, https://www.globalmediainsight.com/blog/web-development-trends/
+                    </a>
+                </li>
+                <li>
+                    <a id="bernersRef" href="https://www.w3.org/People/Berners-Lee/ ">
+                        &emsp;&emsp; Berners-Lee, T. (2022, March 29). <i>Timer Berners-Lee | W3C.</i> Tim Berners-Lee.
+                        Retrieved July 15,<br />
+                        &emsp;&emsp;&emsp;&emsp;2022, from https://www.w3.org/People/Berners-Lee/
+                    </a>
+                </li>
+                <li>
+                    <a id="galileoRef" href="https://www.usg.edu/galileo/skills/unit07/internet07_02.phtml">
+                        &emsp;&emsp; Galileo <i>A Brief History Of The Internet.</i> A brief history of the internet.
+                        (n.d.). Retrieved July 15,<br />
+                        &emsp;&emsp;&emsp;&emsp;2022, from https://www.usg.edu/galileo/skills/unit07/internet07_02.phtml
+                    </a>
+                </li>
+                <li>
+                    <a id="mozillaRef" href="https://www.mozilla.org/en-US/firefox/browsers/browser-history/">
+                        &emsp;&emsp; Mozilla <i>Browser history: Epic power struggles that brought us modern
+                            browsers.</i>
+                        Mozilla. (n.d.). Retrieved July 15,<br />
+                        &emsp;&emsp;&emsp;&emsp;2022, from
+                        https://www.mozilla.org/en-US/firefox/browsers/browser-history/
+                    </a>
+                </li>
+                <li>
+                    <a id="frostRef" href="https://alistapart.com/article/for-a-future-friendly-web/">
+                        &emsp;&emsp;Frost, B., Clancey, P., Overkamp, L., Brosset, P., Prater, S. V., &amp; Wills, M.
+                        (2012,
+                        March 13). <i>For a <br />
+                            &emsp;&emsp;&emsp;&emsp;future-friendly web.</i> A List Apart. Retrieved July 15, 2022, from
+                        https://alistapart.com/article/for-a-future-friendly-web/
+
+                    </a>
+                </li>
+                <li>
+                    <a id="strackRef" href="http://home.snafu.de/tilman/mozilla/stomps.html">
+                        &emsp;&emsp;Strack, J. F. (1997, October 4). <i>Mozilla Stomps IE.</i> Mozilla stomps IE.
+                        Retrieved
+                        July 15, 2022, from<br />
+                        &emsp;&emsp;&emsp;&emsp;http://home.snafu.de/tilman/mozilla/stomps.html
+                    </a>
+                </li>
+                <li>
+                    <a id="unityRef" href="https://blog.unity.com/technology/webassembly-is-here">
+                        &emsp;&emsp;Unity3D. (n.d.). <i>Webassembly is here!</i> Unity Blog. Retrieved July 15, 2022,
+                        from<br />
+                        &emsp;&emsp;&emsp;&emsp;https://blog.unity.com/technology/webassembly-is-here
+                    </a>
+                </li>
+                <li>
+                    <a id="w3cRef" href="https://www.w3.org/Consortium/mission">
+                        &emsp;&emsp;W3C <i>Mission.</i> W3C (n.d.). Retrieved July 15, 2022, from
+                        https://www.w3.org/Consortium/mission
+                    </a>
+                </li>
+            </ul>
+
+        </details>
+    </section>
+</body>
+
+<style>
+    /* Taken directly from https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blink */
+    blink {
+        -webkit-animation: 2s linear infinite condemned_blink_effect;
+        /* for Safari 4.0 - 8.0 */
+        animation: 2s linear infinite condemned_blink_effect;
+    }
+
+    /* for Safari 4.0 - 8.0 */
+    @-webkit-keyframes condemned_blink_effect {
+        0% {
+            visibility: hidden;
+        }
+
+        50% {
+            visibility: hidden;
+        }
+
+        100% {
+            visibility: visible;
+        }
+    }
+
+    @keyframes condemned_blink_effect {
+        0% {
+            visibility: hidden;
+        }
+
+        50% {
+            visibility: hidden;
+        }
+
+        100% {
+            visibility: visible;
+        }
+    }
+</style>
+
+
+<template id="mobileFirst">
+    <p>
+        &emsp;&emsp;Mobile First design is a variation on <a onclick="changeTemplate('responsive',this);">Responsive
+            Design</a> which takes into account the fact that most people now access the internet from their
+        smartphones. By focusing on making your site look nice on mobile, you are ensuring accessibility to those using
+        mobile devices. It is much easier to make a site that is designed with mobile in mind work on a larger screen,
+        such as a laptop or browser, than it is to make a website designed for desktop users work well on small mobile
+        screens such as cell phones.
+    </p>
+</template>
+<template id="responsiveTemplate">
+    <p>
+        &emsp;&emsp;Responsive Design are techniques that allow websites to adapt to the screen size of the device that
+        is being used to view it. This is important because it ensures that websites can be viewed on any device, from
+        smartphones to desktop computers.
+    </p>
+</template>
+<template id="futureTemplate">
+    &emsp;&emsp;Future-Friendly design is an approach that takes into account the ever-changing nature of the web.
+    Design decisions
+    made today may not be good decisions in the future. To address that, Future-Friendly Design focuses on ways to make
+    it easy to stand the test of time and allow you to update and change your website as the web evolves. By using the
+    other methods of design mentioned here, you will make your website more future proof. Still, more techniques can be
+    done, such as by implementing the website logic using micro-services which allow you to quickly swap different
+    components in and out of your site with is. <a onclick="OpenReferences('frostRef')"><i>(Frost et al., 2012)</i></a>
+</template>
+<template id="adaptiveTemplate">
+    <p>
+        &emsp;&emsp;Progressive Enhancement & Adaptive Web Design is the opposite of <a
+            onclick="changeTemplate('grace',this);">Graceful Degradation</a>. Instead of designing for the worst
+        possible specification, it allows you to take advantage of the latest in technologies such as HTML5 while still
+        maintaining compatibility with older devices and browsers.
+    </p>
+</template>
+<template id="gracefulTemplate">
+    <p>
+        &emsp;&emsp;Graceful Degradation refers to the ability of a website to continue to function even if some of its'
+        features are not supported by the browser or device that is being used to view it. By ensuring that your website
+        has a safe 'fallback' mode for legacy browsers, you are also ensuring that your users will not be adversely
+        impacted by using legacy browsers.
+    </p>
+</template>
+<script>
+    var templateContainer = document.getElementById('templateContainer');
+    var mobileTemplate = document.getElementById("mobileFirst");
+    var responsiveTemplate = document.getElementById('responsiveTemplate');
+    var futureTemplate = document.getElementById('futureTemplate');
+    var adapativeTemplate = document.getElementById('adaptiveTemplate');
+    var gracefulTemplate = document.getElementById('gracefulTemplate');
+    var last;
+
+    function changeTemplate(name, ele) {
+        var tmp;
+        switch (name) {
+            case 'mobile':
+                tmp = mobileTemplate;
+                break;
+            case 'responsive':
+                tmp = responsiveTemplate;
+                break;
+            case 'future':
+                tmp = futureTemplate;
+                break;
+            case 'adapt':
+                tmp = adapativeTemplate;
+                break;
+            case 'grace':
+                tmp = gracefulTemplate;
+                break;
+            default:
+                tmp = gracefulTemplate;
+                break;
+        }
+        templateContainer.replaceChildren(tmp.content.cloneNode(true));
+        // Set button active 
+        if (ele) {
+            ele.setAttribute("active", "true");
+        }
+        if (last) {
+            last.removeAttribute("active");
+        }
+        last = ele;
+    };
+    // Set default
+    changeTemplate();
+
+    var referenceTab = document.getElementById("references")
+    var lfocus;
+
+    function OpenReferences(rid) {
+        referenceTab.setAttribute("open", "true");
+        var ref = document.getElementById(rid)
+        console.log(rid);
+        if (lfocus) {
+            lfocus.blur();
+        }
+        if (ref) {
+            ref.scrollIntoView();
+            ref.focus();
+            lfocus = ref;
+        }
+
+    }
+</script>
+
+</html>
