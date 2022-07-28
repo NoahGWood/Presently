@@ -1,4 +1,4 @@
-<form class="presentation_form">
+<form id="presentationForm">
     <div class="row">
         <div class="col">
             <label for="text">Text</label>
@@ -6,16 +6,19 @@
         </div>
     </div>
     <div class="row">
-        <button class="button col" submit>Submit</button>
-        <button class="button col" onclick="clearChanges()">Clear Changes</button>
+        <button class="button col">Submit</button>
+        <button class="button col" type="button" onclick="clearChanges()">Clear Changes</button>
     </div>
 </form>
 <script>
     var defaultText = "{{ text }}";
     var clearChangeText = defaultText;
-    var textArea = '';
+    var textArea = document.getElementById('text');
+    var form = document.getElementById('presentationForm');
+    textArea.value = defaultText;
     function textUpdate() {
         defaultText = textArea.value;
+        console.log(defaultText);
     }
 
     function clearChanges() {
@@ -24,6 +27,7 @@
     }
 
     function submitForm(event) {
+        console.log("UPDATING FORM");
         var url = "/editor/{{ fname }}"
         console.log(url);
         var request = new XMLHttpRequest();
@@ -41,5 +45,4 @@
     }
 
     form.addEventListener("submit", submitForm);
-
 </script>
