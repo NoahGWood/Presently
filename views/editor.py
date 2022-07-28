@@ -38,7 +38,7 @@ def edit(presentation):
             videos = GetVideos(pres)
             print(a.filepath)
             text = GetText(a.filepath)
-            return render_template("editor.html", name=current_user.email, current=pres, videos=videos, text=text, fname=presentation)
+            return render_template("editor.html", name=current_user.email, current=pres, videos=videos, text=text.replace("\n","\\n").replace("\r","\\r"), fname=presentation)
     else:
         return redirect("/editor/new")
 
