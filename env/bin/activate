@@ -48,6 +48,7 @@ export PATH
 export STRIPE_SECRET_KEY="sk_test_51L9NbTFQdRpLHHqXkIdukcpr6DknYyNSDLNm1kOScxInqpYrESzAJJtJ07tzvSzYhHi0dnG9JuBOPhh9NnC0OIsi00tc42GwZJ"
 export STRIPE_PUBLIC_KEY="pk_test_51L9NbTFQdRpLHHqXSXcpoizaiS63FY2KWQ6yvSl5xN2nfqxksjNFyvxQEybGhgqXYIXvISjWrGzYtFxlIRWpOWz900JaQYnIWM"
 export STRIPE_ENDPOINT_SECRET="abcdefg"
+export DATABASE_URL="postgresql://presently_admin:password@localhost:5432/presently_db"
 
 # unset PYTHONHOME if set
 # this will fail if PYTHONHOME is set to the empty string (which is bad anyway)

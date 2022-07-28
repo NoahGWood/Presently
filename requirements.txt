@@ -3,3 +3,5 @@ flask-security-too
 sqlalchemy
 stripe
 gunicorn
+google-cloud-storage
+psycopg
