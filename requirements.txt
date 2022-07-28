@@ -4,4 +4,4 @@ sqlalchemy
 stripe
 gunicorn
 google-cloud-storage
-psycopg-binary
+psycopg2
