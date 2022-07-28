@@ -3,6 +3,9 @@
 # Ignore environment files
 env/*
 
+# Ignore credentials file
+creds.json
+
 # Ignore uploads folder
 server/static/uploads/*
 
