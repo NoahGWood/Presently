@@ -47,7 +47,7 @@ def new():
         if len(text) <= 1:
             return render_template("new.html")
         else:
-            fname = NewPresentation(title, lang, translate, genimages, text)
+            fname = NewPresentation(current_user, title, lang, translate, genimages, text)
             return redirect("/editor/{}".format(fname))
     return render_template("new.html", name=current_user.email, presentations=current_user.presentations)
 

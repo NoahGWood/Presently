@@ -49,7 +49,7 @@ def AuthPresentation(user, presentation):
     return UserCanAccessPresentation(user, pres_user), pres, pres_file
 
 
-def NewPresentation(title, language, translate, genimages, text):
+def NewPresentation(current_user, title, language, translate, genimages, text):
     fname = str(uuid.uuid4())
     write_text_file(fname, text)
     time = datetime.datetime.now()
