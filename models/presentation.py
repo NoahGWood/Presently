@@ -2,7 +2,6 @@ from database import Base
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import Boolean, DateTime, Column, Integer, String, ForeignKey
 
-
 class File(Base):
     __tablename__ = 'file'
     id = Column(Integer, primary_key=True)

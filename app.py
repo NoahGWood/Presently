@@ -104,7 +104,8 @@ def tos_termly():
 #    return render_template_string('Hello {{email}} !', email=current_user.email)
 
 # Blueprints
-from views.test import profile_pages
+#from views.test import profile_pages
+from views.profile import profile_pages
 from views.editor import editor_pages
 from views.pay import payment_pages
 

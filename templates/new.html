@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}New{% endblock title %}
-
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+{% endblock css %}
 {% block body %}
 <div>
     <h1>New Presentation</h1>
@@ -30,7 +32,17 @@
 
         </fieldset>
         <fieldset style="border:0;">
-        <textarea id="text" name="text" cols="40" rows="10" spellcheck="true" style="border-radius:.5rem;"></textarea>
+        <textarea id="text" name="text" spellcheck="true">
+class: center, middle
+# Title
+---
+# Agenda
+1. Introduction
+2. Deep-dive
+3. ...
+---
+# Introduction
+        </textarea>
         </fieldset>
         <fieldset style="width:100%; border:0;">
         <button>Submit</button>
@@ -73,5 +85,9 @@ function PlayTestAudio()
 {
     wiz3Audio.play();
 }
+</script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("text") });
 </script>
 {% endblock javascript %}
