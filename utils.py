@@ -1,6 +1,8 @@
 from database import db_session
 from models import User, File, Presentation, PresentationUser
 from file_manager import load_file_text, upload_file_from_txt
+import uuid
+import datetime
 
 def FindPresentationFile(presentation):
     return db_session.query(File).filter(

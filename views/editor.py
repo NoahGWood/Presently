@@ -4,9 +4,6 @@ from flask_security import current_user, auth_required
 from werkzeug.utils import redirect
 from database import db_session
 from utils import *
-import datetime
-import hashlib
-import uuid
 
 editor_pages = Blueprint("editor_pages", __name__, url_prefix='/editor')
 
