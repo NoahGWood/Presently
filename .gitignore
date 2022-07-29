@@ -7,10 +7,10 @@ env/*
 creds.json
 
 # Ignore uploads folder
-server/static/uploads/*
+static/uploads/*
 
 # Ignore hosting files
-server/*.yaml
+*.yaml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
