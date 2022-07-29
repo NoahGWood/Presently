@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="dist/reset.css" />
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+</head>
+
+<body onload="init()">
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown>
+        <textarea data-template id="source" data-separator="^\n\n\n" data-separator-vertical="^\n\n"
+          data-separator-notes="^Note:">
+		</textarea>
+    <aside class="notes">
+      
+    </aside>
+      </section>
+    </div>
+  </div>
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/menu/menu.js"></script>
+  <script>
+    var source = document.getElementById('source');
+    function init() {
+      window.parent.setUpFrame(); return true;
+    }
+
+    function SetText(text) {
+      source.innerHTML = text;
+      build_presentation();
+    }
+
+    function build_presentation() {
+      Reveal.initialize({
+
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+        slideNumber: 'c',
+
+        plugins: [
+          RevealMarkdown, RevealHighlight, RevealNotes,
+          RevealMenu
+        ],
+        menu: {
+          numbers: 'c',
+          openSlideNumber: true,
+          themes: true,
+          themesPath: 'dist/theme/',
+          transitions: true,
+        }
+      });
+    }
+
+    toggleMenu = () => {
+        let menu = Reveal.getPlugin('menu');
+        if (menu) menu.toggle();
+      };
+  </script>
+  <script>
+  </script>
+</body>
+
+</html>

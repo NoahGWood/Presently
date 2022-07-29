@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}My Presentations{% endblock %}
+{% block body %}
+<h1>Profile</h1>
+<div class="container">
+    <section>
+    <div class="row">
+        <div class="col">
+            {% include 'partials/wallet.html' %}
+        </div>
+        <div class="col">
+            {% include 'partials/wallet.html' %}
+        </div>
+        <div class="col">
+            {% include 'partials/wallet.html' %}
+        </div>
+    </div>
+    </section>
+    <section>
+    <div class="row">
+        <div class="col">
+            <h2>Presentations</h2>
+        </div>
+    </div>
+    {% for presentation in presentations %}
+    <div class="row" style="text-align:left;">
+        <div class="col item-sliding">
+            <div class="item">{{ presentation.title if presentation.title or 'No Title' }}</div>
+            <div class="item-option">
+                <button onclick="location.href='/editor/{{ presentation.file }}';">Edit</button>
+                <button>Delete</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </section>
+</div>
+{% endblock %}
