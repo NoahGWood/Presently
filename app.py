@@ -1,6 +1,6 @@
 
 import os
-from flask import Flask, render_template, render_template_string, url_for
+from flask import Flask, render_template, render_template_string, url_for, send_from_directory
 from flask_security import Security, current_user, auth_required, hash_password, SQLAlchemySessionUserDatastore
 from database import db_session, init_db, create_session
 from models import User, Role, File, PresentationUser, Presentation 
@@ -97,6 +97,10 @@ def tos():
 @app.route("/tos_termly")
 def tos_termly():
     return render_template("tos_termly.html")
+
+@app.route("/favicon.ico")
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static/imgs'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 #@app.route("/dashboard")
 #@auth_required()
