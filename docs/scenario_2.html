@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Presently</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <meta name="author" content="Noah G. Wood">
+
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <title>Presently</title>
+</head>
+
+<body>
+    <header role="banner">
+        <nav class="main-nav">
+            <a class="brandlink" href="index.html" style="display:inline-block"><b>Presently</b></a>
+            <span class="collapsable">
+                <a href="deliverable_1.html">Deliverable 1</a>
+                <a href="research_paper.html">Research Paper</a>
+                <a href="components.html">Components</a>
+                <a href="wireframes.html">Wireframes</a>
+                <a href="scenario_1.html">Scenario 1</a>
+                <a href="scenario_2.html" active>Scenario 2</a>
+            </span>
+        </nav>
+    </header>
+    <section>
+        <h1 id='presently'>Presently</h1>
+        <p>&emsp;&emsp;Any modern website is bound to have some complex features. In Presently for instance, one of the
+            moderately complex features is the "sliding items" which neatly hide the "edit" and "delete" <abbr title="The &lt;button&gt; tag defines a clickable button."><strong>Button</strong>s</abbr> behind the item. Accomplish this sliding effect in javascript would be difficult and error proned (I tried), so instead I used <abbr title="Cascading Style Sheets"><strong>CSS</strong></abbr> <abbr title="An animation lets an element gradually change from one style to another."><strong>animations</strong></abbr>
+            and <abbr title="Transform lets you modify an element's position on the page."><strong>transformations</strong></abbr>.
+            I first created three CSS <abbr title="A CSS Class is used to apply a set of CSS rules to a collection of elements"><strong>classes</strong></abbr>: item, item-sliding, and item-option. The item-sliding class allows me to only add the sliding effects on items I want by wrapping them in another <abbr title="HyperText Markup Language"><strong>HTML</strong></abbr>element. The item class contains the information that shows by default, and the item-option class is used to wrap around the content that I want to slide in from the side.
+        </p>
+        <p>
+            &emsp;&emsp;I wanted the animation to occur whenever a user had the item selected or whenever the mouse <abbr title="When the mouse is directly over an element"><strong>hovered</strong></abbr> over the item. I could have done this in javascript as well, but instead I simply used the <abbr title="CSS attribute that is used whenever the mouse is over the element"><strong>:hover</strong></abbr> and <abbr title="CSS attribute that is used whenever the element is selected"><strong>:active</strong></abbr> <abbr title="Used to select elements of a specific class"><strong>CSS Selectors</strong></abbr> to trigger the <strong>animation</strong>. With these <strong>Selectors</strong>, I was able to query the child element item-option to apply the <strong>animation</strong> to it. By default, I had hidden the item-option class so that it would not appear in the <abbr title=""><strong>DOM</strong></abbr>. Because it was hidden, I first had to make it visible. Then, I applied the <abbr title="CSS operation used to select the animation"><strong>animation-name</strong></abbr> and duration settings.
+
+            To create the <strong>animation</strong> itself, I used the <abbr title="An animation rule for CSS"><strong>@keyframes</strong></abbr> <strong>CSS</strong> rule along with the from and to rules to set the starting and ending <strong>transform</strong>. Because I wanted the item-group to slide in from the right, in the <i>from</i> rule, <strong>translateX</strong> to set the transform to 25% which means when the <strong>animation</strong> is over, the item-group will take up 75% of the
+            screen.
+
+            I ran into another snag however, at the end of the <strong>animation</strong> the item-goup instantly went back to its'
+            starting position at the edge of the screen. I had to set the <abbr title="Property that determines what happens when animation is complete."><strong>animation-fill-mode</strong></abbr> property to 'forwards' which meant that at the end of the animation, the item would maintain its' final position.
+
+            With all of this done, I had a lovely slider:
+            <div style="width:50%; padding-left: 20%;">
+            <div class="item-sliding">
+                <span class="item">Hover over me to test!</span>
+                <div class="item-option"><strong>Hello!</strong></div>
+            </div></div>
+        </p>
+
+        <p>
+            Word count: 394
+        </p>
+    </section>
+    <style>
+        .item {
+            min-width: 25px;
+            padding: 5px;
+            font-size: large;
+            text-align: center;
+        }
+
+        .item-sliding {
+            display: block;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            user-select: all;
+            cursor: move;
+            border-bottom: 1px solid white;
+            text-align: center;
+            height: 2.5rem;
+            background-color: darkgrey;
+            border-radius: 1.5rem;
+        }
+
+        .item-sliding .item {
+            user-select: none;
+            text-align: center;
+        }
+
+        .item-sliding:hover .item-option,
+        .item-sliding:active .item-option {
+            background: green;
+            visibility: visible;
+            animation-name: slide;
+            animation-duration: 1.5s;
+            animation-fill-mode: forwards;
+
+        }
+
+        .item-sliding:hover,
+        .item-sliding:active {
+            background: grey;
+        }
+
+        .item-option {
+            float:left;
+            margin: 0;
+            margin-top: -1.26rem;;
+            width: 100%;
+            height: 2.5rem;
+            visibility: hidden;
+            text-align: center;
+            border-radius: 1.5rem;
+        }
+
+
+        @keyframes slide {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0%);
+            }
+        }
+    </style>
+</body>
+
+</html>
