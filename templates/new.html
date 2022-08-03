@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
 {% block title %}New{% endblock title %}
+{% block meta %}
+<!-- Tell robots we hate them -->
+<meta name=”robots” content=”index,nofollow”>
+{% endblock meta %}
 {% block css %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<style>
+    .CodeMirror {
+        height: 300px;
+    }
+</style>
 {% endblock css %}
 {% block body %}
-<div>
-    <h1>New Presentation</h1>
-    <form method="POST" href="/editor/new">
+<h1>New Presentation</h1>
+<article>
+    <form method="POST">
         <fieldset style="float:left; text-align:left; width: 40%; border:0;">
             <h3>Settings</h3>
             <label for="title">Project Title:</label>
-            <input type="text" id="title" name="title" />
+            <input type="text" id="title" name="title" value="New Presentation" />
             <br />
             <label for="languages">Voices</label>
             <select class="list-dt" id="languages" name="languages" onchange="UpdateAudioTest()">
@@ -19,9 +28,9 @@
                 <option value="en-AU-Neural2-A">English (Australia)</option>
                 <option value="es-US-Neural2-A">Spanish (US)</option>
             </select>
-            <a class="label" for="testAudio" onclick="PlayTestAudio()">Test</a>
+            <a class="label" onclick="PlayTestAudio()">Test</a>
             <audio id="testAudio" preload="none">
-                <source id="testSource" type="audio/wav">
+                <source id="testSource" type="audio/wav" src="/static/audio/en-US-Neural2-A.wav">
                 Your browser does not support the audio element.
             </audio>
             <br />
@@ -32,7 +41,7 @@
 
         </fieldset>
         <fieldset style="border:0;">
-        <textarea id="text" name="text" spellcheck="true">
+            <textarea id="text" name="text" spellcheck="true">
 # Welcome To Presently!
 ---
 ## How To Use?
@@ -102,47 +111,45 @@ Code highlighting? Definitely!
 Try different themes to see what you enjoy!
         </textarea>
         </fieldset>
-        <fieldset style="width:100%; border:0;">
-        <button>Submit</button>
-    </fieldset>
+        <fieldset style="width:100%; border:0; text-align: center;">
+            <button data-size="big">Create</button>
+        </fieldset>
     </form>
-</div>
+</article>
 {% endblock body %}
 
 {% block javascript %}
 
 <script>
     var wiz3Lang = document.getElementById("languages");
-var wiz3Audio = document.getElementById("testAudio");
-var wiz3AudioSrc = document.getElementById("testSource");
-var wiz3US = "{{url_for('static', filename='audio/en-US-Neural2-A.wav') }}"
-var wiz3UK = "{{url_for('static', filename='audio/en-GB-Neural2-A.wav') }}"
-var wiz3AU = "{{url_for('static', filename='audio/en-AU-Neural2-A.wav') }}"
-var wiz3Es = "{{url_for('static', filename='audio/es-US-Neural2-A.wav') }}"
-var newAudioSrc = wiz3US;
-function UpdateAudioTest()
-{
-    if (wiz3Lang.value.includes('es')) {
-        newAudioSrc = wiz3Es;
-    }   
-    else if (wiz3Lang.value.includes('US')) {
-        newAudioSrc = wiz3US;
+    var wiz3Audio = document.getElementById("testAudio");
+    var wiz3AudioSrc = document.getElementById("testSource");
+    var wiz3US = "{{url_for('static', filename='audio/en-US-Neural2-A.wav') }}"
+    var wiz3UK = "{{url_for('static', filename='audio/en-GB-Neural2-A.wav') }}"
+    var wiz3AU = "{{url_for('static', filename='audio/en-AU-Neural2-A.wav') }}"
+    var wiz3Es = "{{url_for('static', filename='audio/es-US-Neural2-A.wav') }}"
+    var newAudioSrc = wiz3US;
+    function UpdateAudioTest() {
+        if (wiz3Lang.value.includes('es')) {
+            newAudioSrc = wiz3Es;
+        }
+        else if (wiz3Lang.value.includes('US')) {
+            newAudioSrc = wiz3US;
+        }
+        else if (wiz3Lang.value.includes('GB')) {
+            newAudioSrc = wiz3UK;
+        }
+        else if (wiz3Lang.value.includes('AU')) {
+            newAudioSrc = wiz3AU;
+        }
+        wiz3AudioSrc.setAttribute("src", newAudioSrc);
+        wiz3Audio.load();
     }
-    else if (wiz3Lang.value.includes('GB')) {
-        newAudioSrc = wiz3UK;
-    }
-    else if (wiz3Lang.value.includes('AU')) {
-        newAudioSrc = wiz3AU;
-    }
-    wiz3AudioSrc.setAttribute("src", newAudioSrc);
-    wiz3Audio.load();
-}
-UpdateAudioTest();
+    UpdateAudioTest();
 
-function PlayTestAudio()
-{
-    wiz3Audio.play();
-}
+    function PlayTestAudio() {
+        wiz3Audio.play();
+    }
 </script>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script>

@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-header"><h1>Presentations <a href="/editor/new">&plus;</a></h1></div>
+    <div class="card-list">
+        {% for presentation in current_user.presentations %}
+        <div class="item-sliding">
+            <div class="item">{{ presentation.title if presentation.title or 'No Title' }}</div>
+            <div class="item-option">
+                {% set x = presentation.files[0].filepath.split('.')[0] %}
+                <button onclick="location.href='/editor/{{ x }}'">Edit</button>
+                <button>Delete</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

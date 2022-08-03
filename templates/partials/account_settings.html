@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-header"><h1>Settings</h1></div>
+    <div class="card-list">
+        <iframe height="350px" src="{{ url_for_security('change_password') }}"></iframe>
+        <form>
+            <label for="username">Username:</label>
+            <input id="username" name="username" value="{{ current_user.username }}">
+            <label for="email">Email:</label>
+            <input id="email" name="email" value="{{ current_user.email }}">
+            <p>Last Login: {{ current_user.last_login_at }}</p>
+            <p>Last Login IP: {{ current_user.last_login_ip }}</p>
+            <p>Current IP: {{ current_user.current_login_ip }}</p>
+            <button>Update</button>
+        </form>
+    </div>
+</div>

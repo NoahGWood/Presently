@@ -1,66 +1,9 @@
-<form id="presentationForm">
-    <label for="text">Text</label>
+<form class="presentationForm" id="presentationForm" aria-hidden="true">
     <textarea name="text" id="text" cols="35" rows="20" style="width:100%; overflow-y: auto;"></textarea>
     <br />
     <div class="row">
-    <button class="button col" type="button" onclick="rebuild()">Rebuild Presentation</button>
-    <button class="button col" type="button" onclick="clearChanges()">Clear Changes</button>
+    <button class="button col" type="button" onclick="rebuild()">Rebuild</button>
+    <button class="button col" type="button" onclick="clearChanges()">Clear</button>
     <button class="button col">Submit</button>
 </div>
 </form>
-<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-<script>
-    var defaultText = "{{ text }}";
-    var textArea = document.getElementById('text');
-    var form = document.getElementById('presentationForm');
-    textArea.value = defaultText;
-    var simplemde = new SimpleMDE({ element: document.getElementById("text"), forceSync: true});
-    /* Get iframe & pass text to it */
-    function setUpFrame() {
-        var frame = window.frames['iframe'].contentWindow;
-        frame.SetText(textArea.value);
-        console.log("SET UP FRAME");
-    }
-
-    function rebuild() {
-        ReloadIframe();
-    }
-
-    function clearChanges() {
-        console.log("CLEAR");
-        textArea.value = defaultText;
-        simplemde.value(defaultText);
-    }
-
-    function submitForm(event) {
-        var url = "/editor/{{ fname }}"
-        var request = new XMLHttpRequest();
-        request.open('POST', url, true);
-        request.onload = function () {
-            console.log(request.responseText);
-        }
-
-        request.onerror = function () {
-            console.log("ERROR");
-        }
-
-        request.send(new FormData(event.target));
-        event.preventDefault();
-        // Make sure we reset default text after saving
-        defaultText = textArea.value;
-        // Reload presentation iframe
-        ReloadIframe();
-    }
-
-    function ReloadIframe() {
-        document.getElementById('iframe').src = document.getElementById('iframe').src;
-    }
-
-    form.addEventListener("submit", submitForm);
-</script>
-
-<style>
-    .CodeMirror {
-        height: 400px;
-    }
-</style>

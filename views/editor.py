@@ -1,4 +1,3 @@
-import os
 from flask import Blueprint, flash, render_template, request, url_for, current_app, abort
 from flask_security import current_user, auth_required
 from werkzeug.utils import redirect
@@ -9,6 +8,7 @@ editor_pages = Blueprint("editor_pages", __name__, url_prefix='/editor')
 
 @editor_pages.route("/<presentation>", methods=["GET", "POST"])
 @auth_required()
+@user_subscribed
 def edit(presentation):
     access, pres, pres_file = AuthPresentation(current_user, presentation)
     if access:
@@ -31,6 +31,7 @@ def edit(presentation):
 
 @editor_pages.route("/new", methods=["GET", "POST"])
 @auth_required()
+@user_subscribed
 def new():
     if request.method == "POST":
         title = request.form['title']
@@ -59,6 +60,7 @@ def submitted():
 
 @editor_pages.route("/video/<video_id>", methods=["GET"])
 @auth_required()
+@user_subscribed
 def stream_video(video_id):
     return video_id
     current_user

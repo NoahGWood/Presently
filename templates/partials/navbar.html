@@ -1,13 +1,11 @@
-<header role="banner">
+<header>
     <nav class="main-nav">
         <a class="brandlink" href="/" style="display:inline-block"><b>Presently</b></a>
         <div class="divider"></div>
         <div class="nav-items">
-            {% if current_user.is_authenticated %}<a class="nav-item" href="/logout">Logout</a>
-            <a class="nav-item" href="/profile">
-                Profile
-            </a>
+            {% if current_user.is_authenticated %}
             <a class="nav-item" href="/editor/new">New</a>
+            <a class="nav-item" href="/logout">Logout</a>
             {% else %}
             <a class="nav-item" href="/about">About</a>
             <a class="nav-item" href="/features">Features</a>

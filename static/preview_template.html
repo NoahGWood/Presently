@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
 
 <head>
+  <title>Presentation Generator</title>
   <link rel="stylesheet" href="dist/reset.css" />
   <link rel="stylesheet" href="dist/reveal.css" />
   <link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -13,10 +15,9 @@
       <section data-markdown>
         <textarea data-template id="source" data-separator="^\n\n\n" data-separator-vertical="^\n\n"
           data-separator-notes="^Note:">
-		</textarea>
-    <aside class="notes">
-      
-    </aside>
+		    </textarea>
+        <aside class="notes">
+        </aside>
       </section>
     </div>
   </div>
@@ -60,9 +61,9 @@
     }
 
     toggleMenu = () => {
-        let menu = Reveal.getPlugin('menu');
-        if (menu) menu.toggle();
-      };
+      let menu = Reveal.getPlugin('menu');
+      if (menu) menu.toggle();
+    };
   </script>
   <script>
   </script>

@@ -1,0 +1,22 @@
+<div class="card">
+    <form method="POST" action="/pay/create-checkout-session">
+        <div class="card-header">
+            <h1>Subscription</h1>
+        </div>
+        {% if current_user.subscription != [] %}
+        <p>Status: {{ current_user.subscription[0].status }}</p>
+        <p>Started: {{ current_user.subscription[0].starts | epoch }}</p>
+        <p>Ends: {{ current_user.subscription[0].ends | epoch }}</p>
+        <div class="card-footer">
+            <button type="submit" data-size="large">Manage Subscription</button>
+        </div>
+        {% else %}
+        {% if current_user.has_subscribed %}
+        <p>You are not currently subscribed</p>
+        {% else %}
+        <p>To start your free trial, subscribe below</p>
+        {% endif %}
+        <button type="submit">Subscribe Now</button>
+        {% endif %}
+    </form>
+</div>

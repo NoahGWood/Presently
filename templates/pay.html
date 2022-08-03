@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% block meta %}
-    <!-- Tell robots we hate them -->
-    <meta name=”robots” content=”index, nofollow”>{% endblock meta %}
+<!-- Tell robots we hate them -->
+<meta name=”robots” content=”index,nofollow”>
+{% endblock meta %}
 {% block title %}Pay{% endblock title %}
 {% block body %}
-        <h1>Presently</h1>
-            {% include 'partials/wallet.html' %}
-            {% include 'partials/order_form.html' %}
-        </div>
-    {% endblock body %}
+{% include 'partials/subscription_status.html' %}
+{% endblock body %}
 
 {% block javascript %}
 <script src="https://js.stripe.com/v3/"></script>
