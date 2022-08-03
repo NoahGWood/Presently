@@ -23,9 +23,8 @@ def get_payment_config():
     return jsonify(stripe_config)
 
 
-@payment_pages.route("/success")
-@auth_required()
-def success():
+@payment_pages.route("/success/<session>")
+def success(session):
     """Landing page after subscribe"""
     return render_template("success.html")
 
