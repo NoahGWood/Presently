@@ -79,7 +79,7 @@ def Webhook():
 @auth_required()
 def create_checkout_session():
     """Creates a new checkout session."""
-    domain_url = "http://127.0.0.1:5000/pay/"
+    domain_url = os.environ.get("DOMAIN_URL", "http://127.0.0.1:5000/pay/")
     stripe.api_key = stripe_keys['secret']
     try:
         if len(current_user.subscription) == 0:
