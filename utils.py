@@ -163,6 +163,11 @@ def set_customer(event):
     print(event)
 
 
+def create_customer_id():
+    """Used to add a stripe customer id to a user if one does not exist."""
+    sc = stripe.Customer.create(email=current_user.email)
+    current_user.stripeCustomerId = sc.id
+
 def create_customer(email, phone, stripeCustomerId):
     """Creates and returns a customer."""
     password = "password"

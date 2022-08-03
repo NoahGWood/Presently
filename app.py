@@ -9,6 +9,7 @@ from database import db_session, init_db, create_session
 from models import User, Role
 from views.pay import payment_pages
 from views.editor import editor_pages
+from utils import create_customer_id
 
 
 app = Flask(__name__)
@@ -96,6 +97,7 @@ def home():
         # Check if we have an account
         if current_user.stripeCustomerId is None:
             print("NO STRIPE USER ID")
+            create_customer_id()
             #create_customer()
         else:
             print(current_user.stripeCustomerId)
