@@ -7,3 +7,5 @@ google-cloud-pubsub
 google-cloud-storage
 google-cloud-texttospeech
 psycopg2
+twilio
+
