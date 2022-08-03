@@ -40,10 +40,10 @@ def cancel():
     """Landing page after canceled session."""
     return render_template("cancelled.html")
 
-
-@payment_pages.route("/stripe_webhook", methods=['POST'])
 # @require_POST
 # @csrf_exempt
+
+@payment_pages.route("/stripe_webhook", methods=['POST'])
 def Webhook():
     """Stripe webhook.
 
