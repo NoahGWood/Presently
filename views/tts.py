@@ -5,10 +5,12 @@ from werkzeug.utils import redirect
 
 profile_pages = Blueprint("speech", __name__, url_prefix='/speech')
 
+
 @profile_pages.route("/<presentation>/<slide>", methods=["GET"])
 @auth_required()
 def speech_file(presentation, slide):
     pass
+
 
 @profile_pages.route("/", methods=["GET"])
 @auth_required()

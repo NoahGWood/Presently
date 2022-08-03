@@ -5,6 +5,7 @@ from werkzeug.utils import redirect
 
 profile_pages = Blueprint("profile_pages", __name__, url_prefix='/profile')
 
+
 @profile_pages.route("/", methods=["GET"])
 @auth_required()
 def dump():

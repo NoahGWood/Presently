@@ -1,15 +1,19 @@
-from flask import Blueprint, flash, render_template, request, url_for, current_app, abort
+""" Contains views for creating & editing presentations
+"""
+
+from flask import Blueprint, render_template, request
 from flask_security import current_user, auth_required
 from werkzeug.utils import redirect
-from database import db_session
-from utils import *
+from utils import GetText, GetVideos, NewPresentation, user_subscribed, AuthPresentation, write_text_file
 
 editor_pages = Blueprint("editor_pages", __name__, url_prefix='/editor')
+
 
 @editor_pages.route("/<presentation>", methods=["GET", "POST"])
 @auth_required()
 @user_subscribed
 def edit(presentation):
+    """Presentation editor view"""
     access, pres, pres_file = AuthPresentation(current_user, presentation)
     if access:
         if request.method == "POST":
@@ -24,9 +28,11 @@ def edit(presentation):
             videos = GetVideos(pres)
             print(pres_file.filepath)
             text = GetText(pres_file.filepath)
-            return render_template("editor.html", name=current_user.email, current=pres, videos=videos, text=text.replace("\n","\\n").replace("\r","\\r"), fname=presentation)
-    else:
-        return redirect("/editor/new")
+            return render_template("editor.html", name=current_user.email, current=pres,
+                                   videos=videos,
+                                   text=text.replace(
+                                       "\n", "\\n").replace("\r", "\\r"), fname=presentation)
+    return redirect("/editor/new")
 
 
 @editor_pages.route("/new", methods=["GET", "POST"])
@@ -48,19 +54,23 @@ def new():
         if len(text) <= 1:
             return render_template("new.html")
         else:
-            fname = NewPresentation(current_user, title, lang, translate, genimages, text)
+            fname = NewPresentation(
+                current_user, title, lang, translate, genimages, text)
             return redirect("/editor/{}".format(fname))
-    return render_template("new.html", name=current_user.email, presentations=current_user.presentations)
+    return render_template("new.html", name=current_user.email,
+                           presentations=current_user.presentations)
 
 
 @editor_pages.route("/submitted")
 @auth_required()
 def submitted():
+    """The submitted page"""
     return render_template("submitted.html")
+
 
 @editor_pages.route("/video/<video_id>", methods=["GET"])
 @auth_required()
 @user_subscribed
 def stream_video(video_id):
+    """Streams the video"""
     return video_id
-    current_user
