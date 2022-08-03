@@ -49,6 +49,7 @@ def Webhook():
 
     Implements: subscriptions
     """
+    print("STARTING WEBHOOK!")
     event = None
     payload = request.data
     sig_header = request.headers['STRIPE_SIGNATURE']
