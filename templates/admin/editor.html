@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block meta %}
+<!-- Tell robots we love them -->
+<meta name=”robots” content=”index,follow”>{% endblock meta %}
+{% block title %}Administration | Editing{% endblock title %}
+{% block body %}
+<h2>Editing User: {{ user.id }}</h2>
+<div class="row">
+    <div class="col">
+        {% include 'admin/user_info_card.html' %}
+    </div>
+    <div class="col">
+        {% include 'admin/user_presentation_card.html' %}
+    </div>
+    <div class="col">
+        {% include 'partials/account_settings.html' %}
+    </div>
+</div>
+{% endblock body %}

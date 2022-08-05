@@ -2,15 +2,16 @@
 """
 import os
 import datetime
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, redirect
+from flask_principal import Principal
 from flask_security import Security, current_user, hash_password
-from flask_security import SQLAlchemySessionUserDatastore
+from flask_security import SQLAlchemySessionUserDatastore, user_registered
 from database import db_session, init_db, create_session
-from models import User, Role
+from models import User, Role, RolesUsers
 from views.pay import payment_pages
 from views.editor import editor_pages
+from views.admin import admin_pages
 from utils import create_customer_id
-
 
 app = Flask(__name__)
 
@@ -24,7 +25,9 @@ app.config['SECURITY_PASSWORD_SALT'] = os.environ.get(
 
 # Allow register users
 app.config["SECURITY_REGISTERABLE"] = True
+# Disable mail for now
 app.config["SECURITY_SEND_REGISTER_EMAIL"] = False
+app.config["SECURITY_SEND_PASSWORD_CHANGE_EMAIL"] = False
 # Allow password change
 app.config["SECURITY_CHANGEABLE"] = True
 # Allow password reset
@@ -40,39 +43,69 @@ app.config['UPLOAD_EXTENSIONS'] = ['.txt', 'md', '.docx']
 user_datastore = SQLAlchemySessionUserDatastore(db_session, User, Role)
 security = Security(app, user_datastore)
 
+# Load principal
+principals = Principal(app)
+
+# Set up some filters
 
 @app.template_filter('epoch')
 def epoch(s):
-    t = datetime.datetime.fromtimestamp(int(s))
+    t = s#datetime.datetime.fromtimestamp(int(s))
     t = t.strftime('%B %-d, %Y')
     return t  # datetime.datetime.fromtimestamp(s)
 
+@app.template_filter('len')
+def template_len(s):
+    return len(s)
+
+# Set up database if not already exist
 
 @app.before_first_request
 def create_user():
-    """Used to create initial user."""
+    """Used to create initial admin user."""
     init_db()
+    # Create admin & user roles if not exist
+    if not db_session.query(Role).filter(Role.name=='admin').first():
+        admin_role = Role(
+            name="admin",
+            description="Site administration"
+        )
+        db_session.add(admin_role)
+        db_session.commit()
+    else:
+        admin_role = db_session.query(Role).filter(Role.name=='admin').first()
+    if not db_session.query(Role).filter(Role.name=='user').first():
+        user_role = Role(
+            name="user",
+            description="Default site user"
+        )
+        db_session.add(user_role)
+        db_session.commit()
+    ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "test@me.com")
+    ADMIN_PASS = os.environ.get("ADMIN_PASSWORD", 'password')
+    if not user_datastore.find_user(email=ADMIN_EMAIL):
+        user_datastore.create_user(
+            email=ADMIN_EMAIL,
+            password=ADMIN_PASS,
+            roles=[admin_role, user_role]
+        )
+        db_session.commit()
+    # Create a test accont if not exist
     if not user_datastore.find_user(email="test@me.com"):
         user_datastore.create_user(
-            email="test@me.com", password=hash_password("password"))
-    db_session.commit()
-#    create_file_db()
-#    db_session.commit()
+            email="test@me.com",
+            password="password",
+            roles=[user_role]
+        )
+        db_session.commit()
 
-#def create_file_db():
-#    """Used to create initial user."""
-#    usr = User.query.first()
-#    if not usr.presentations:
-#        # Create a test presentation
-#        pres = Presentation(title='Test')
-#        f = File(ftype='text', filepath='static/uploads/test.txt',
-#                 presentation_id=pres.id)
-#        pres.files.append(f)
-#        usr.presentations.append(pres)
-#        db_session.add(pres)
-#        db_session.add(f)
-#        db_session.add(usr)
 
+# Set default role for new users
+@user_registered.connect_via(app)
+def user_registered_sighandler(app, user, confirm_token):
+    default_role = user_datastore.find_role("user")
+    user_datastore.add_role_to_user(user, default_role)
+    db.session.commit()
 
 @app.before_request
 def _create_session():
@@ -87,9 +120,12 @@ def remove_session(req):
     db_session.remove()
     return req
 
+# Handle 403 forbidden
+@app.errorhandler(403)
+def page_not_found(e):
+    return redirect('/')
+
 # Views
-
-
 @app.route("/")
 def home():
     """Home page"""
@@ -154,12 +190,15 @@ def favicon():
                                             'static/imgs'), 'favicon.ico',
                                mimetype='image/vnd.microsoft.icon')
 
+@app.route("/deleted")
+def deleted():
+    return render_template("deleted.html")
 
 # Blueprints
 
 app.register_blueprint(editor_pages)
 app.register_blueprint(payment_pages)
-
+app.register_blueprint(admin_pages)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=False)

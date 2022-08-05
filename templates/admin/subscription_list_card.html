@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-header"><h1>Subscriptions</a></h1></div>
+    <div class="card-list">
+        {% if subscriptions %}
+            {% for subscription in subscriptions %}
+            <div class="item-sliding">
+                <div class="item">{{ user.email }}</div>
+                <div class="item-option">
+                    <button onclick="location.href='/admin/subscription/edit/{{ subscription.id }}'">Edit</button>
+                    <button onclick="location.href='/admin/subscription/delete/{{ subscription.id }}'">Delete</button>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <p>No subscribers.</p>
+        {% endif %}
+    </div>
+</div>

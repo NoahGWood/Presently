@@ -127,6 +127,31 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.main-text[data-bg="black"] {
+    background-color: black;
+}
+
+.presentation-form {
+    min-height: 80vh;
+    max-height: 100vh;
+    overflow: hidden;
+    text-align: left;
+    border-radius: var(--border-radius);
+    border: var(--default-border);
+}
+
+.presentation-frame {
+    min-width: 130px;
+    min-height: 80vh;
+    max-height: 100vh;
+}
+
+/* Set up stripe pricing table */
+.PricingTable {
+    border-radius: var(--border-radius);
+    border: var(--default-border);
+}
+
 @media screen and (max-width:767px) {
 
 
@@ -239,6 +264,7 @@ footer {
     }
 
     .main-content article figure {
+        margin:auto;
         min-width: 60%;
         border-radius: var(--border-radius);
         border: var(--default-border);
@@ -411,7 +437,7 @@ h1,h2{
 
 /* Form CSS */
 
-form {
+.basic-form {
 /*    background: rgba(78, 74, 74, 0.829);
   */  overflow: hidden;
     text-align: left;
@@ -490,7 +516,7 @@ input[type="submit"] {
     }
 
     @media (min-width:501px) {
-        form {
+        .basic-form{
             width: fit-content;
             padding: 3rem;
             height: fit-content;
@@ -616,35 +642,35 @@ li {
     }
 }
 
-.presentation_form {
-    resize: none;
-    display: inline-block;
-    width:50%;
-    height:350px;
-}
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
+    position: absolute; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
+/*    right: 0;
+/*    bottom: 0;
+*/    width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: none; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #2e2626bb;
     margin: 15% auto;
     /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    border: 1px solid rgba(136, 136, 136, 0);
+    width: 42.5%;
+    height: auto;
+    overflow: hidden;
     /* Could be more or less, depending on screen size */
+}
+
+.modal-content iframe {
+    max-width: 100%;
 }
 
 /* The Close Button */
@@ -661,3 +687,41 @@ li {
     text-decoration: none;
     cursor: pointer;
 }
+
+ /* Style the tab */
+ .tab {
+    overflow: auto;
+    display: flex;
+    width: auto;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    width:100%;
+    margin:1%;
+    padding:15px;
+    padding-block-end: 15px;
+  }
+  
+
+  /* Change background color of buttons on hover */
+  .tab button:hover,
+  .tab button.active {
+    background: var(--secondary);
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    border-top: none;
+    width: inherit;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    text-align:left;
+  } 

@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-header"><h1>Users&#9;<a href="/admin/new/user">&plus;</a></h1></div>
+    <div class="card-list">
+        {% for user in users %}
+        <div class="item-sliding">
+            <div class="item">{{ user.email }}</div>
+            <div class="item-option">
+                <button onclick="location.href='/admin/edit/{{ user.id }}'">Edit</button>
+                <button onclick="location.href='/admin/delete/{{ user.id }}'">Delete</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -5,14 +5,6 @@
 {% block title %}Home{% endblock title %}
 {% block body %}
 <h2>Presently</h2>
-<div id="videoModal" class="modal">
-    <div class="modal-content">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/QvcXtuhTd_M?enablejsapi=1&version=3&playerapiid=ytplayer" title="YouTube video player"
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen id="youtubeVideo"></iframe>
-        <span class="close">&times;</span>
-    </div>
-</div>
 {% if current_user.is_authenticated %}
 <div class="row">
     <div class="col">
@@ -38,10 +30,20 @@
     </figure>
     {% include 'partials/call_to_action.html' %}
 </article>
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/QvcXtuhTd_M?enablejsapi=1&version=3&playerapiid=ytplayer"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen id="youtubeVideo"></iframe>
+        <span class="close">&times;</span>
+    </div>
+</div>
 {% endif %}
 {% endblock body %}
 
-{% block  javascript %}
+{% block javascript %}
 <script>
     var yt = document.getElementById("youtubeVideo");
     var videoModal = document.getElementById("videoModal");
@@ -49,7 +51,7 @@
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    launchVideo.onclick = function() {
+    launchVideo.onclick = function () {
         videoModal.style.display = "block";
         yt.contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
     }
@@ -59,12 +61,36 @@
         yt.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target != videoModal && event.target != launchVideo) {
             videoModal.style.display = "none";
             yt.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
         }
     }
+</script>
+<script>
+    function openSetting(evt, name) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
 
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+        
+    } 
+
+    openSetting("evt","info");
 </script>
 {% endblock javascript %}

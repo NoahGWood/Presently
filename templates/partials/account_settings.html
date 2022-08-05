@@ -1,16 +1,29 @@
 <div class="card">
-    <div class="card-header"><h1>Settings</h1></div>
-    <div class="card-list">
-        <iframe height="350px" src="{{ url_for_security('change_password') }}"></iframe>
-        <form>
+    <div class="card-header tab">
+        <button class="tablinks" onclick="openSetting(event, 'info')" type="button"><strong>Info</strong></button>
+        <button class="tablinks" onclick="openSetting(event, 'password')"
+            type="button"><strong>Pass</strong></button>
+        <button class="tablinks" onclick="openSetting(event, 'uname')" type="button"><strong>Email</strong></button>
+    </div>
+    <div>
+        <div id="info" class="tabcontent">
+            <div style="margin:auto; padding:5%">
+                <p>Last Login: {{ current_user.last_login_at }}</p>
+                <p>Last Login IP: {{ current_user.last_login_ip }}</p>
+                <p>Current IP: {{ current_user.current_login_ip }}</p>
+                <p>Presentations Made: {{ current_user.presentations | len }}</p>
+            </div>
+        </div>
+        <div id="password" class="tabcontent">
+            <iframe height="350px" src="{{ url_for_security('change_password') }}"></iframe>
+        </div>
+        <div id="uname" class="tabcontent">
             <label for="username">Username:</label>
             <input id="username" name="username" value="{{ current_user.username }}">
             <label for="email">Email:</label>
             <input id="email" name="email" value="{{ current_user.email }}">
-            <p>Last Login: {{ current_user.last_login_at }}</p>
-            <p>Last Login IP: {{ current_user.last_login_ip }}</p>
-            <p>Current IP: {{ current_user.current_login_ip }}</p>
+
             <button>Update</button>
-        </form>
+        </div>
     </div>
 </div>

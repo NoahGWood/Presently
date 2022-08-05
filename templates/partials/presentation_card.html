@@ -7,7 +7,7 @@
             <div class="item-option">
                 {% set x = presentation.files[0].filepath.split('.')[0] %}
                 <button onclick="location.href='/editor/{{ x }}'">Edit</button>
-                <button>Delete</button>
+                <button onclick="location.href='/editor/delete/{{ x }}'">Delete</button>
             </div>
         </div>
         {% endfor %}

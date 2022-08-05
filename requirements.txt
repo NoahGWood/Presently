@@ -1,5 +1,6 @@
 flask
 flask-security-too
+flask-principal
 sqlalchemy
 stripe
 gunicorn

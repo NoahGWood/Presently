@@ -15,7 +15,7 @@
 		Free Stock Footage by <a rel="nofollow" href="http://www.videezy.com">Videezy!</a> 
 	</video>
 	{% else %}
-	<iframe title="Presentation Generator" style="width: 100%; height:100%;" id="iframe" src="{{ url_for('static', filename='preview_template.html') }}">
+	<iframe title="Presentation Generator" class="presentation-frame" id="iframe" src="{{ url_for('static', filename='preview_template.html') }}">
 	</iframe>
 	{% endif %}
 </figure>

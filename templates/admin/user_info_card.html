@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-header">
+        <h1>User Info</a></h1>
+    </div>
+        <form>
+            <p>Email: {{ user.email }}</p>
+            <p>Active: {{ user.active }}</p>
+            <p>Last Login {{ user.last_login_at | epoch }}</p>
+            <p>Last IP: {{ user.last_login_ip }}</p>
+            <p>Roles: {% for role in user.roles %} {{ role.name }}, {% endfor %}</p>
+            <p>Stripe ID: {{ user.stripeCustomerId }}</p>
+        </form>
+</div>

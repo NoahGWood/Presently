@@ -8,6 +8,7 @@ from file_manager import load_file_text, upload_file_from_txt
 from functools import wraps
 from flask import redirect, url_for
 from flask_security import current_user, SQLAlchemySessionUserDatastore, hash_password
+from flask_principal import Permission, RoleNeed
 from twilio.rest import Client
 
 stripe_keys = {
@@ -251,3 +252,23 @@ def user_subscribed(f):
         else:
             return redirect(url_for("payment_pages.pay"))
     return decorator
+
+admin_permission = Permission(RoleNeed('admin'))
+
+# Setup roles for principal
+# This allows for principal to restrict access
+# to endpoints based on user role
+def on_identity_loaded(sender, identity):
+    # Set the identity user
+    identity.user = current_user
+
+    # Add the UserNeed to identity
+    if hasattr(current_user, 'id'):
+        identity.provides.add(UserNeed(current_user.id))
+    
+    if hasattr(current_user, 'roles'):
+        for role in current_user.roles:
+            identity.provides(add(RoleNeed(role.name)))
+
+    if hasattr(current_user, 'subscription'):
+        identity.provides(add(RoleNeed(current_user.subscription[0].status)))
