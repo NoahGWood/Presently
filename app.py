@@ -50,9 +50,12 @@ principals = Principal(app)
 
 @app.template_filter('epoch')
 def epoch(s):
-    t = s#datetime.datetime.fromtimestamp(int(s))
-    t = t.strftime('%B %-d, %Y')
-    return t  # datetime.datetime.fromtimestamp(s)
+	if type(s) == type(""):
+		t = datetime.datetime.fromtimestamp(int(s))
+	else:
+		t = s
+	t = t.strftime('%B %-d, %Y')
+	return t  # datetime.datetime.fromtimestamp(s)
 
 @app.template_filter('len')
 def template_len(s):
