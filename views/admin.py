@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, jsonify
 from flask_security import current_user, auth_required
 from werkzeug.utils import redirect
 from utils import admin_permission
-from admin_utils import GetAllUsers, GetUserById, GetSubscriptionById
+from admin_utils import GetAllUsers, GetUserById, GetSubscriptionById, GetAllSubscribers
 from utils import GetText, GetVideos, NewPresentation, user_subscribed, AuthPresentation, write_text_file
 admin_pages = Blueprint("admin_pages", __name__, url_prefix='/admin')
 
@@ -12,7 +12,7 @@ admin_pages = Blueprint("admin_pages", __name__, url_prefix='/admin')
 @admin_permission.require(http_exception=403)
 def admin():
     """Main admin view"""
-    return render_template("admin.html", users=GetAllUsers())
+    return render_template("admin.html", users=GetAllUsers(), subscriptions=GetAllSubscribers())
 
 @admin_pages.route("/edit/<accountId>")
 @auth_required()

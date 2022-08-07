@@ -6,6 +6,10 @@ def GetAllUsers():
     """Returns a list of all users"""
     return db_session.query(User).all()
 
+def GetAllSubscribers():
+    """Returns all subscriptions"""
+    return db_session.query(SubscriptionUsers).all()
+
 def GetUserById(id):
     """Returns a user by id"""
     return db_session.query(User).filter(User.id==id).first()

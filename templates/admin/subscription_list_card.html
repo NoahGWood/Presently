@@ -1,18 +1,15 @@
 <div class="card">
     <div class="card-header"><h1>Subscriptions</a></h1></div>
     <div class="card-list">
-        {% if subscriptions %}
-            {% for subscription in subscriptions %}
+        {% for user in users %}
+            {% if user.subscription[0] %}
             <div class="item-sliding">
                 <div class="item">{{ user.email }}</div>
                 <div class="item-option">
-                    <button onclick="location.href='/admin/subscription/edit/{{ subscription.id }}'">Edit</button>
-                    <button onclick="location.href='/admin/subscription/delete/{{ subscription.id }}'">Delete</button>
+                    <button onclick="location.href='https://dashboard.stripe.com/test/subscriptions/{{ user.subscription[0].stripeSubscriptionId }}'">Edit</button>
                 </div>
             </div>
-            {% endfor %}
-        {% else %}
-        <p>No subscribers.</p>
-        {% endif %}
+            {% endif %}
+        {% endfor %}
     </div>
 </div>

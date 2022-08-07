@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-header">
+        <h1>Statistics</a></h1>
+    </div>
+        <form>
+            <p>Logins: {{ current_user.login_count }}</p>
+            <p>Presentations: {{ current_user.presentations | len }}</p>
+            <p>Average Word Count: {{ current_user.presentations | wordCount }}</p>
+            <p>Most Common Words: <br />
+                {{ current_user.presentations | common }}</p>
+        </form>
+</div>

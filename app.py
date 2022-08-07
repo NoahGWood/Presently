@@ -12,6 +12,7 @@ from views.pay import payment_pages
 from views.editor import editor_pages
 from views.admin import admin_pages
 from utils import create_customer_id
+from statistics import StatsByUser
 
 app = Flask(__name__)
 
@@ -61,6 +62,21 @@ def epoch(s):
 def template_len(s):
     return len(s)
 
+@app.template_filter('wordCount')
+def template_filter(presentations):
+    global count
+    global words
+    count, words = StatsByUser(presentations)
+    return count/len(presentations)
+
+@app.template_filter('common')
+def template_common(subscriptions):
+    global count
+    global words
+    if not words:
+        count, words = StatsByUser(presentations)
+
+    return ', '.join(words)
 # Set up database if not already exist
 
 @app.before_first_request
