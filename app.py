@@ -67,10 +67,13 @@ def template_filter(presentations):
     global count
     global words
     count, words = StatsByUser(presentations)
-    return count/len(presentations)
+    if  len(presentations) > 0:
+        return count/len(presentations)
+    else:
+        return 0
 
 @app.template_filter('common')
-def template_common(subscriptions):
+def template_common(presentations):
     global count
     global words
     if not words:
